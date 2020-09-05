@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import './styles.css';
 
 function CreateArea(props) {
-  const [isExpanded, setExpanded] = useState(false);
-
+ 
   const [note, setNote] = useState({
     title: "",
-    content: ""
+    content: "",
+    Address: "",
+    contact:""
   });
 
   function handleChange(event) {
@@ -24,34 +25,45 @@ function CreateArea(props) {
     props.onAdd(note);
     setNote({
       title: "",
-      content: ""
+      content: "",
+      Address:"",
+      contact:""
     });
     event.preventDefault();
-  }
-
-  function expand() {
-    setExpanded(true);
   }
 
   return (
     <div>
       <form className="create-note">
-        {isExpanded && (
           <input
             name="title"
             onChange={handleChange}
             value={note.title}
-            placeholder="Title"
+            placeholder="Temple Name"
           />
-        )}
 
         <textarea
           name="content"
-          onClick={expand}
           onChange={handleChange}
           value={note.content}
-          placeholder="Take a note..."
-          rows={isExpanded ? 3 : 1}
+          placeholder="Description"
+          rows={1}
+        />
+
+        <textarea
+          name="Address"
+          onChange={handleChange}
+          value={note.Address}
+          placeholder="Address"
+          rows={1}
+        />
+
+        <textarea
+          name="contact"
+          onChange={handleChange}
+          value={note.contact}
+          placeholder="Preist Contact No."
+          rows={1}
         />
         <button onClick={submitNote}>
           Add

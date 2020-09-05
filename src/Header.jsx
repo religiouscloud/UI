@@ -5,7 +5,7 @@ function Header() {
   return (
     <header>
       <h1>
-        Keeper
+        PoojaPath
       </h1>
     </header>
   );

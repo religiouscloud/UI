@@ -33,6 +33,8 @@ function App() {
             id={index}
             title={noteItem.title}
             content={noteItem.content}
+            Address={noteItem.Address}
+            contact={noteItem.contact}
             onDelete={deleteNote}
           />
         );
