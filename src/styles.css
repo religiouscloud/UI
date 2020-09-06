@@ -23,20 +23,25 @@ header h1 {
   color: #fff;
   font-family: "McLaren", cursive;
   font-weight: 200;
-  text-align-last: center;
+  text-align-last: auto;
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   text-align: center;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;
+  height: 40px;
 }
 
 footer p {
   color: #ccc;
   padding: 16px 32px;
+}
+.signout {
+  width: 120px;
+  float: right;
+  margin-top: 0px;
 }
 .note {
   background: #fff;

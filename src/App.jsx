@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
+import { withAuthenticator } from '@aws-amplify/ui-react';
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -44,4 +45,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
