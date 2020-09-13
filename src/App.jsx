@@ -4,7 +4,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
-import { withAuthenticator } from '@aws-amplify/ui-react';
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -34,8 +33,11 @@ function App() {
             id={index}
             title={noteItem.title}
             content={noteItem.content}
+            imgurl={noteItem.imgurl}
+            wikilink={noteItem.wikilink}
             Address={noteItem.Address}
             contact={noteItem.contact}
+            deity={noteItem.deity}
             onDelete={deleteNote}
           />
         );
@@ -45,4 +47,4 @@ function App() {
   );
 }
 
-export default withAuthenticator(App);
+export default App;

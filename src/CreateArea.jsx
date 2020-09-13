@@ -6,8 +6,11 @@ function CreateArea(props) {
   const [note, setNote] = useState({
     title: "",
     content: "",
+    imgurl: "",
+    wikilink: "",  
     Address: "",
-    contact:""
+    contact:"",
+    deity:""
   });
 
   function handleChange(event) {
@@ -26,8 +29,11 @@ function CreateArea(props) {
     setNote({
       title: "",
       content: "",
+      imgurl: "",
+      wikilink: "",
       Address:"",
-      contact:""
+      contact:"",
+      deity:""
     });
     event.preventDefault();
   }
@@ -51,6 +57,22 @@ function CreateArea(props) {
         />
 
         <textarea
+          name="imgurl"
+          onChange={handleChange}
+          value={note.imgurl}
+          placeholder="Img Url"
+          rows={1}
+        />
+
+        <textarea
+          name="wikilink"
+          onChange={handleChange}
+          value={note.wikilink}
+          placeholder="Wiki Link"
+          rows={1}
+        />
+
+        <textarea
           name="Address"
           onChange={handleChange}
           value={note.Address}
@@ -65,6 +87,15 @@ function CreateArea(props) {
           placeholder="Preist Contact No."
           rows={1}
         />
+
+        <textarea
+          name="deity"
+          onChange={handleChange}
+          value={note.deity}
+          placeholder="Famous Deity"
+          rows={1}
+        />
+
         <button onClick={submitNote}>
           Add
       </button>
