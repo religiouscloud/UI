@@ -14,9 +14,9 @@ function Note(props) {
       <div>
         <p>To read more <a href={props.wikilink}>Click here</a></p> 
       </div>
-      <p>Famous Deity: {props.deity}</p>
-      <p>Address: {props.Address}</p>
-      <p>Preist Contact:{props.contact} </p>
+      <p><b>Famous Deity :-</b> {props.deity}</p>
+      <p><b>Address :-</b> {props.Address}</p>
+      <p><b>Preist Contact :-</b>{props.contact} </p>
       {/* <button onClick={handleClick}>
         Delete
       </button> */}
