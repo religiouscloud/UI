@@ -9,7 +9,7 @@ function Note(props) {
   return (
     <div className="note">
       <h1>{props.title}</h1>
-      <p>{props.content}</p>
+      <p>{props.content.substring(0,200)+"..."}</p>
       <img src={props.imgurl} alt="new" height={440} width={440} />
       <div>
         <p>To read more <a href={props.wikilink}>Click here</a></p> 
@@ -17,9 +17,9 @@ function Note(props) {
       <p>Famous Deity: {props.deity}</p>
       <p>Address: {props.Address}</p>
       <p>Preist Contact:{props.contact} </p>
-      <button onClick={handleClick}>
+      {/* <button onClick={handleClick}>
         Delete
-      </button>
+      </button> */}
     </div>
   );
 }

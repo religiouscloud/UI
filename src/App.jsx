@@ -3,10 +3,11 @@ import './styles.css';
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
+import {data} from "./data";
 import CreateArea from "./CreateArea";
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(data);
 
   function addNote(newNote) {
     setNotes(prevNotes => {
@@ -25,7 +26,7 @@ function App() {
   return (
     <div>
       <Header />
-      <CreateArea onAdd={addNote} />
+      {/* <CreateArea onAdd={addNote} /> */}
       {notes.map((noteItem, index) => {
         return (
           <Note
