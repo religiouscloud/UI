@@ -108,11 +108,35 @@
 // }
 
 //  export default CreateArea;
-import React from 'react';
+import React , {useState,useEffect} from 'react';
 import './styles.css';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 export default function CreateArea() {
+  const initialState = {
+            templeName: "BAPS ",
+						address: "Chino Hills",
+						shortDescription: "The BAPS Shri Swaminarayan Mandir[a] is a Hindu temple complex located in Chino Hills, in southwestern San Bernardino County in southern California.",
+						detailedDescription: "The BAPS Shri Swaminarayan Mandir[a] is a Hindu temple complex located in Chino Hills, in southwestern San Bernardino County in southern California. The temple belongs to the Bochasanwasi Akshar Purushottam Swaminarayan Sanstha denomination of Hinduism. However, the BAPS Shri Swaminarayan Mandir is open to visitors of all faiths.",
+						city: "San Bernardino",
+						state: "California",
+						country: "United States",
+						deity: "Shri Swaminarayan",
+						websiteUrl: "https://en.wikipedia.org/wiki/BAPS_Shri_Swaminarayan_Mandir_Chino_Hills",
+						headerImageUrl: "https://en.wikipedia.org/wiki/BAPS_Shri_Swaminarayan_Mandir_Chino_Hills#/media/File:BAPS_Mandir_LA_1.jpg",
+						createdBy: "Aryan"
+  }
+  useEffect(() => {
+    axios.post("https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/add", initialState)
+            .then(res => {
+                console.log(res);
+                console.log("Messi");
+            })
+            .catch(err => {
+                console.log(err);
+            })
+  }, []);
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => console.log(data);
   console.log(errors);

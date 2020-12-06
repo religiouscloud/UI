@@ -12,17 +12,17 @@ import Tab from 'react-bootstrap/Tab'
 function Temple({match}) {
 
     var id = match.params.title;
-    var obj = [{
-        templeId : id
-    }];
-    console.log(id);
+    var obj = {
+        "templeId": id
+    }
+    console.log(obj);
     const [temple, setTemple] = useState({});
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        axios.post("https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/templeId/" , obj)
+        axios.post("https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/templeId",obj)
             .then(res => {
                 console.log(res.data);
-                setTemple(res.data);
+                setTemple(res.data[0]);
                 setLoading(false);
             })
             .catch(err => {
