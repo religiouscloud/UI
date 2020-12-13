@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import axios from 'axios';
+import {Redirect} from 'react-router-dom'
 import '@vaadin/vaadin-details';
 import '@vaadin/vaadin-accordion';
 import "@ui5/webcomponents/dist/TabContainer";
@@ -8,6 +9,7 @@ import "@ui5/webcomponents/dist/TabSeparator";
 import "@ui5/webcomponents/dist/Carousel.js";
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab'
+import "@ui5/webcomponents/dist/Button";
 
 function Temple({match}) {
 
@@ -18,6 +20,7 @@ function Temple({match}) {
     console.log(obj);
     const [temple, setTemple] = useState({});
     const [loading, setLoading] = useState(true);
+    const [deleted,setDeleted] = useState(false);
     useEffect(() => {
         axios.post("https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/templeId",obj)
             .then(res => {
@@ -32,6 +35,23 @@ function Temple({match}) {
     // var temple = obj[0];
 
     // if(!temple) temple = data[0];
+    const payload = {
+        templeId : temple.templeId,
+        location : temple.location
+    };
+    
+    const handleDelete = () => {
+        axios.delete('https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/remove', { data: payload })
+        .then(res => {
+            console.log(res);
+            setDeleted(true);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
+    if(deleted) return <Redirect to='/' />
 
     return (
         <div>
@@ -49,6 +69,7 @@ function Temple({match}) {
                     <img src={temple.headerImageUrl} alt="new" height={350} width={500} />
                 </ui5-carousel>
                 </div>
+                <ui5-button onClick={handleDelete} design="Negative">Remove</ui5-button>    
             </Tab>
             <Tab eventKey="contact" title="Contact">
                 <div className="contact">
