@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import './styles.css';
-import Header from "./Header";
-import Footer from "./Footer";
-import Note from "./Note";
+import './App.css';
 import Home from "./Home";
 import Pagination from "./Pagination";
 import {data} from "./data";
+import Footer from "./Footer";
 import CreateArea from "./CreateArea";
-import About from './About';
 import Contact from './Contact'
 import { BrowserRouter as Router,Switch, Route } from "react-router-dom";
 import Temple from "./Temple";
+import LandingPage from "./landingPage";
+import About from "./About";
 
 function App() {
   // const [notes, setNotes] = useState(data);
@@ -40,19 +39,20 @@ function App() {
   // }
 
   return (
-    <Router>
-      <div>
-        <Header />
+      <React.Fragment>
+      <div className="content">
+      <Router>
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/templeSearch" exact component={Home} />
           <Route path="/about" exact component={About} />
-          <Route path="/contact" exact component={Contact} />
           <Route path="/create" exact component={CreateArea} />
           <Route path="/:title" component={Temple} />
         </Switch>
-        {/* <Pagination postsPerPage={postsPerPage} totalPosts={notes.length} paginate = {paginate}/> */}
-      </div>
     </Router>
+    </div>
+    <Footer className="Footer"/>
+    </React.Fragment>
   );
 }
 

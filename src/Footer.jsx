@@ -4,8 +4,8 @@ import './styles.css';
 function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer>
-      <p>Copyright ⓒ {year}</p>
+    <footer className="Footer">
+      <p className="fop">Copyright ⓒ {year}</p>
     </footer>
   );
 }

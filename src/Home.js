@@ -2,13 +2,14 @@ import React , {useState ,useEffect} from 'react'
 import Note from "./Note";
 // import {data} from "./data";
 import axios from 'axios';
+import Header from './Header';
 
-function Home() {
-
-    const [data, setData] = useState([]);
+export default function Home() {
+  
+  const [data, setData] = useState([]);
     
 
-    useEffect( () => {
+  useEffect( () => {
 
       // let response = () => {
       //   return new Promise(function(resolve, reject) {
@@ -50,6 +51,7 @@ function Home() {
 
     return (
         <div>
+        <Header />
       {data.map((noteItem, index) => {
       return (
         <Note
@@ -58,11 +60,6 @@ function Home() {
           title={noteItem.templeName}
           content={noteItem.shortDescription}
           imgurl={noteItem.headerImageUrl}
-          wikilink={noteItem.websiteUrl}
-          Address={noteItem.location}
-          contact={noteItem.createdBy}
-          deity={noteItem.deity}
-          // onDelete={deleteNote}
         />
       );
       })}
@@ -71,4 +68,3 @@ function Home() {
     
 }
 
-export default Home

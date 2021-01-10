@@ -9,7 +9,9 @@ import "@ui5/webcomponents/dist/TabSeparator";
 import "@ui5/webcomponents/dist/Carousel.js";
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab'
+import Carousel from 'react-bootstrap/Carousel'
 import "@ui5/webcomponents/dist/Button";
+import Header from './Header';
 
 function Temple({match}) {
 
@@ -54,7 +56,8 @@ function Temple({match}) {
     if(deleted) return <Redirect to='/' />
 
     return (
-        <div>
+        <div className="messi">
+            <Header/>
             {loading ? <div>...loading</div> : 
             <Tabs defaultActiveKey="home">
             <Tab eventKey="home" title="Temple">
@@ -64,18 +67,22 @@ function Temple({match}) {
                     <p className="cont">To read more <a href={temple.websiteUrl} target="_blank" rel="noopener noreferrer">Click here</a></p>
                 </div>
                 <div className="blue">
-                <ui5-carousel className="carousel" infiniteScrollOffset={0} cyclic={true}>
-                    <img src={temple.headerImageUrl} alt="new" height={350} width={500} />
-                    <img src={temple.headerImageUrl} alt="new" height={350} width={500} />
-                </ui5-carousel>
+                <Carousel>
+                    <Carousel.Item>
+                    <img src={temple.headerImageUrl} alt="new" height={450} width={600} />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                    <img src={temple.headerImageUrl} alt="new" height={450} width={600} />
+                    </Carousel.Item>
+                </Carousel>
                 </div>
                 <ui5-button onClick={handleDelete} design="Negative">Remove</ui5-button>    
             </Tab>
             <Tab eventKey="contact" title="Contact">
                 <div className="contact">
-                <p><b>Preist Contact :-</b>NA</p>
-                <p><b>Famous Deity   :-</b>{temple.deity}</p>
-                <p><b>Address        :-</b>{temple.location}</p>
+                <p className="contact"><b>Preist Contact :-</b>NA</p>
+                <p className="contact"><b>Famous Deity   :-</b>{temple.deity}</p>
+                <p className="contact"><b>Address        :-</b>{temple.location}</p>
                 </div>
             </Tab>
             <Tab eventKey="pricing" title="Pricing" disabled>

@@ -113,6 +113,7 @@ import {Redirect} from 'react-router-dom'
 import './styles.css';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import Header from './Header';
 
 export default function CreateArea() {
   const initialState = {
@@ -161,10 +162,11 @@ export default function CreateArea() {
                 console.log(err);
             });
   }
-  if(submitted) return <Redirect to='/' />
+  if(submitted) return <Redirect to='/templeSearch' />
    
   return (
     <div>
+    <Header/>
     <h1 className="adding">Add Temple</h1>
     <form className="create-note" onSubmit={handleSubmit(onSubmit)}>
       <label><h5>Temple Name</h5><input className="create-note" onChange={handleChange} value={temple.templeName} type="text"  name="templeName" ref={register({required: "Temple Name is required", maxLength: {value:80, message:"Name limit 80 characters"}})} /></label>
