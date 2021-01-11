@@ -5,10 +5,13 @@ html {
 body {
   height: 100%;  
   min-height: 100vh;
-  background-image: url('/assets/bg.jpg');
-  background-repeat: no-repeat;
+  background-color: rgb(127, 171, 192);
+  background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  /* background-image: url('/assets/bg.jpg'); */
+  /* background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed; */
 }
 #root {
   display: flex;
@@ -30,43 +33,19 @@ body {
 }
 
 
-.navv {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: #f5ba13;
-  color: white;
-  font-family: 'Nunito', cursive;
-  min-height: 10vh;
-  margin: auto auto;
-  padding: 16px 32px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-}
 
-.navv-links{
-  width: 30%;
-  display: flex;
-  position: relative;
-  left: 215px;
-  top: 15px;
-  font-family: 'Nunito', cursive;
-  justify-content: space-evenly;
-  align-items: center;
-  list-style: none;
-  min-height: 10vh;
-  margin: auto -16px;
-}
 
-nav h1 {
-  color: #fff;
-  font-family: 'Nunito', cursive;
-  font-weight: 600;
-  text-align-last: center;
-}
-
-.messi {
-  justify-self: center;
+.myClass {
   text-align: center;
+  justify-content: center;
+}
+
+.myClass > a {
+  background-color: white;
+  color: red;
+}
+.myClass > a:hover {
+  background-color: pink;
 }
 
 .fop {
@@ -114,6 +93,11 @@ nav h1 {
 }
 
 .red span {
+  font-family: 'Nunito', cursive;
+  color: rgb(255, 255, 255);
+}
+
+.red p{
   font-family: 'Nunito', cursive;
   color: white;
 }

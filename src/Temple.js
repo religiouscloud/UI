@@ -59,7 +59,7 @@ function Temple({match}) {
         <div className="messi">
             <Header/>
             {loading ? <div>...loading</div> : 
-            <Tabs defaultActiveKey="home">
+            <Tabs className="myClass" defaultActiveKey="home">
             <Tab eventKey="home" title="Temple">
                 <div className="red">
                     <h3 className="cont">{temple.templeName}</h3>
