@@ -10,6 +10,7 @@ import { BrowserRouter as Router,Switch, Route } from "react-router-dom";
 import Temple from "./Temple";
 import LandingPage from "./landingPage";
 import About from "./About";
+import Header from './Header';
 
 function App() {
   // const [notes, setNotes] = useState(data);
@@ -51,7 +52,7 @@ function App() {
         </Switch>
     </Router>
     </div>
-    <Footer className="Footer"/>
+    <Footer />
     </React.Fragment>
   );
 }

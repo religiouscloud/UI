@@ -61,35 +61,18 @@ body {
 }
 
 .red {
-  height: 500px;
-  width: 40%;
   text-align-last: center;
-  text-align: start;
+  text-align: center;
+  margin-top: 15%;
   text-shadow: currentColor;
-  position: absolute;
-  left: 5%;
 }
 
-.cont p {
-  color: white;
-  text-align: left;
-}
-
-.cont {
-  position: relative;
-  top: 70px;
-  margin: 20px;
+.image {
+  height: 340;
 }
 .contact {
   font-family: 'Nunito', cursive;
   color: white;
-}
-.blue {
-  height: 500px;
-  width: 40%;
-  text-align: center;
-  position: relative;
-  left: 55%;
 }
 
 .red span {
@@ -161,6 +144,13 @@ form.create-note {
   border-radius: 7px;
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
+
+.filter {
+  height: 100%;
+  text-align: center;
+  background-color: #fff;
+}
+
 .adding {
   font-family: 'Nunito', cursive;
   position: relative;
@@ -199,6 +189,40 @@ form.create-note textarea {
   border: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+}
+
+.dropdown {
+  width: 100%;
+  height: 40px;
+  position: relative;
+  border-top: none;
+  color: #41423d;
+  border-left: none;
+  border-right: none;
+  font-family: 'Nunito', cursive;
+  padding: 4px;
+  margin-bottom: 10px;
+  margin-right: 300px;
+  outline: none;
+  font-size: 1.2em;
+  resize: none;
+}
+
+.dropdown2 {
+  width: 70%;
+  height: 40px;
+  position: relative;
+  border-top: none;
+  color: #41423d;
+  border-left: none;
+  border-right: none;
+  font-family: 'Nunito', cursive;
+  padding: 4px;
+  margin-bottom: 10px;
+  margin-right: 300px;
+  outline: none;
+  font-size: 1.2em;
+  resize: none;
 }
 
 textarea[type = text]:not(.browser-default):focus:not([readonly]),

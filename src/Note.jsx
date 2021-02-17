@@ -42,14 +42,11 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    width: 460,
-    height: 680,
-    float: 'left',
     background: 'rgba(0,0,0,0.5)',
-    margin: '22px',
+    height: 600,
   },
   media: {
-    height: 440,
+    height: 340,
   },
   title: {
     fontFamily: 'Nunito',
@@ -65,7 +62,7 @@ const useStyles = makeStyles({
 });
 
 const notestyle = {
-  color:"inherit"
+  color:"white"
 };
 
 export default function Note(props) {

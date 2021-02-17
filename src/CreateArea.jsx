@@ -114,6 +114,7 @@ import './styles.css';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import Header from './Header';
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 export default function CreateArea() {
   const initialState = {
@@ -129,6 +130,31 @@ export default function CreateArea() {
 						headerImageUrl: "",
 						createdBy: "VK"
   }
+  const [submitted,setsubmit] = useState(false);
+  const [temple,setTemple] = useState(initialState);
+  const { register, handleSubmit, errors } = useForm();
+  const [countrynot, setc] = useState(false);
+  const [regionnot, setr] = useState(false);
+
+  function selectCountry (val) {
+    setTemple(prevNote => {
+      return {
+      ...prevNote,
+      country: val
+      };
+    });
+  }
+
+  function selectRegion (val) {
+    setTemple(prevNote => {
+      return {
+      ...prevNote,
+      state: val,
+      city: val
+      };
+    });
+  }
+
   function handleChange(event) {
     const { name, value } = event.target;  
     setTemple(prevNote => {
@@ -147,12 +173,10 @@ export default function CreateArea() {
       });
     }
   }
-  const [submitted,setsubmit] = useState(false);
-  const [temple,setTemple] = useState(initialState);
-  const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
     console.log(errors);
     console.log(temple);
+    if(temple.country && temple.state){
     axios.post("https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/add",temple)
             .then(res => {
                 console.log(res.data);
@@ -161,6 +185,16 @@ export default function CreateArea() {
             .catch(err => {
                 console.log(err);
             });
+    }
+    else if(temple.country)
+    {
+      setr(true);
+      setc(false);
+    }
+    else{
+      setc(true);
+      setr(true);
+    }
   }
   if(submitted) return <Redirect to='/templeSearch' />
    
@@ -169,21 +203,21 @@ export default function CreateArea() {
     <Header/>
     <h1 className="adding">Add Temple</h1>
     <form className="create-note" onSubmit={handleSubmit(onSubmit)}>
-      <label><h5>Temple Name</h5><input className="create-note" onChange={handleChange} value={temple.templeName} type="text"  name="templeName" ref={register({required: "Temple Name is required", maxLength: {value:80, message:"Name limit 80 characters"}})} /></label>
-      <div>{errors.Temple_name && <span className="error">{errors.Temple_name.message}</span>}</div>
+      <label><h5>Temple Name</h5></label><input className="create-note" onChange={handleChange} value={temple.templeName} type="text"  name="templeName" ref={register({required: "Temple Name is required", maxLength: {value:80, message:"Name limit 80 characters"}})} />
+      <div>{errors.templeName && <span className="error">{errors.templeName.message}</span>}</div>
       <label><h5>Description</h5></label><textarea className="create-note" onChange={handleChange} value={temple.detailedDescription} type="text"  name="detailedDescription" ref={register({required: "Description is required", maxLength: {value:1000, message:"Description limit 1000 characters"}})} />
-      <div>{errors.Description && <span className="error">{errors.Description.message}</span>}</div>
+      <div>{errors.detailedDescription && <span className="error">{errors.detailedDescription.message}</span>}</div>
       <label><h5>Image Url</h5></label><input className="create-note" onChange={handleChange} value={temple.headerImageUrl} type="url"  name="headerImageUrl" ref={register({required: "Image url is required"})} />
-      <div>{errors.Image_Url && <span className="error">{errors.Image_Url.message}</span>}</div>
-      <label><h5>Wiki Link</h5></label><input className="create-note" onChange={handleChange} value={temple.websiteUrl} type="url" name="websiteUrl" ref={register} />
+      <div>{errors.headerImageUrl && <span className="error">{errors.headerImageUrl.message}</span>}</div>
+      <label><h5>Website</h5></label><input className="create-note" onChange={handleChange} value={temple.websiteUrl} type="url" name="websiteUrl" ref={register} />
+      <label><h5>Country</h5></label><CountryDropdown classes="dropdown" onChange={(val) => selectCountry(val)} value={temple.country} type="text" name="country" />
+      <div>{countrynot && <span className="error">Please select a country</span>}</div>
+      <label><h5>State</h5></label><RegionDropdown blankOptionLabel="No country selected" country={temple.country} classes="dropdown" onChange={(val) => selectRegion(val)} value={temple.state}  type="text" name="state"/> 
+      <div>{regionnot && <span className="error">Please select a Region</span>}</div>
       <label><h5>Address</h5></label><input className="create-note" onChange={handleChange} value={temple.address} type="text" name="address" ref={register({required: "Address is required"})} />
       <div>{errors.address && <span className="error">{errors.address.message}</span>}</div>
-      <label><h5>City</h5></label><input className="create-note" onChange={handleChange} value={temple.city} type="text" name="city" ref={register({required: "Please specify City"})} />
+      <label><h5>City</h5></label><input className="create-note" onChange={handleChange} value={temple.address} type="text" name="city" ref={register({required: "City is required"})} />
       <div>{errors.city && <span className="error">{errors.city.message}</span>}</div>
-      <label><h5>State</h5></label><input className="create-note" onChange={handleChange} value={temple.state} type="text" name="state" ref={register({required: "Please specify State"})} />
-      <div>{errors.state && <span className="error">{errors.state.message}</span>}</div>
-      <label><h5>Country</h5></label><input className="create-note" onChange={handleChange} value={temple.country} type="text" name="country" ref={register({required: "Please specify Country"})} />
-      <div>{errors.country && <span className="error">{errors.country.message}</span>}</div>
       {/* <label><h5>Priest Contact Number</h5></label><input className="create-note" onChange={handleChange} value={temple.templeName} type="tel" name="PCN" ref={register({required: "Contact number is required", min: {value:6, message:"Invalid phone number"}, maxLength: {value:12, message:"Invalid phone number"}})} />
       <div>{errors.PCN && <span className="error">{errors.PCN.message}</span>}</div>
       <label><h5>Priest Email Address</h5></label><input className="create-note" onChange={handleChange} type="email" name="PEA" ref={register({pattern: {value : /^\S+@\S+$/i , message:"Invalid email"}})} />
