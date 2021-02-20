@@ -1,8 +1,6 @@
 import React , {useState ,useEffect} from 'react'
 import Note from "./Note";
 import {data} from "./data";
-import clsx from 'clsx';
-import Chip from '@material-ui/core/Chip';
 import Divider from '@material-ui/core/Divider';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
