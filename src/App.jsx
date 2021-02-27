@@ -5,6 +5,7 @@ import Pagination from "./Pagination";
 import {data} from "./data";
 import Footer from "./Footer";
 import CreateArea from "./CreateArea";
+import Update from "./Update";
 import Contact from './Contact'
 import { BrowserRouter as Router,Switch, Route } from "react-router-dom";
 import Temple from "./Temple";
@@ -40,19 +41,20 @@ function App() {
   // }
 
   return (
-      <React.Fragment>
+    <React.Fragment>
       <div className="content">
-      <Router>
-        <Switch>
-          <Route path="/" exact component={LandingPage} />
-          <Route path="/templeSearch" exact component={Home} />
-          <Route path="/about" exact component={About} />
-          <Route path="/create" exact component={CreateArea} />
-          <Route path="/:title" component={Temple} />
-        </Switch>
-    </Router>
-    </div>
-    <Footer />
+        <Router>
+          <Switch>
+            <Route path="/" exact component={LandingPage} />
+            <Route path="/templeSearch" exact component={Home} />
+            <Route path="/about" exact component={About} />
+            <Route path="/create" exact component={CreateArea} />
+            <Route path="/update/:templeId" exact component={Update} />
+            <Route path="/:title" component={Temple} />
+          </Switch>
+        </Router>
+      </div>
+      <Footer />
     </React.Fragment>
   );
 }

@@ -10,7 +10,13 @@ import {
   CountryRegionData,
 } from "react-country-region-selector";
 
-export default function CreateArea() {
+export default function Update({match}) {
+  var id = match.params.templeId;
+
+  var obj = {
+    templeId: id,
+  };
+
   const initialState = {
     templeName: "",
     address: "",
@@ -24,11 +30,23 @@ export default function CreateArea() {
     headerImageUrl: "",
     createdBy: "VK",
   };
+
   const [submitted, setsubmit] = useState(false);
   const [temple, setTemple] = useState(initialState);
   const { register, handleSubmit, errors } = useForm();
   const [countrynot, setc] = useState(false);
   const [regionnot, setr] = useState(false);
+
+  // useEffect(() => {
+  //     axios.post("https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/templeId",obj)
+  //         .then(res => {
+  //             console.log(res.data);
+  //             setTemple(res.data[0]);
+  //         })
+  //         .catch(err => {
+  //             console.log(err);
+  //         })
+  // },[]);
 
   function selectCountry(val) {
     setTemple((prevNote) => {
@@ -47,7 +65,6 @@ export default function CreateArea() {
       };
     });
   }
-
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -199,7 +216,7 @@ export default function CreateArea() {
         <input
           className="create-note"
           onChange={handleChange}
-          value={temple.city}
+          value={temple.address}
           type="text"
           name="city"
           ref={register({ required: "City is required" })}

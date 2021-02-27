@@ -15,16 +15,12 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Grid } from '@material-ui/core';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import Header from './Header';
 import './styles.css';
 import FilterListSharpIcon from '@material-ui/icons/FilterListSharp';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
+import { makeStyles } from '@material-ui/core/styles';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
-const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,28 +66,27 @@ const useStyles = makeStyles((theme) => ({
 export default function Home(props) {
   
   // const [data, setData] = useState([data]);
-  const initialState = {
-    templeName: "",
-    city: "",
-    state: "",
-    country: "",
-    deity: "",
-}
+  
   const classes = useStyles();
-  const theme = useTheme();
-  const [temple,setTemple] = useState(initialState);
+  const [temple,setTemple] = useState([]);
   const [rel, setRel] = useState('');
   const [deity, setDeity] = useState('');
-  // useEffect( () => {
-  //       axios.get('https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/all')
-  //           .then(res => {
-  //               console.log(res.data);
-  //               setData(res.data);
-  //           })
-  //           .catch(err => {
-  //               console.log(err);
-  //           });
-  // },[]);
+  var obj = {
+    
+  };
+  useEffect( () => {
+        axios
+          .post(
+             "https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/all",obj
+          )
+          .then((res) => {
+            console.log(res);
+            setTemple(res.data.Items);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+  },[]);
 
   function selectCountry (val) {
     setTemple(prevNote => {
@@ -206,7 +201,7 @@ export default function Home(props) {
     </Grid>
     <div style={{ padding : 12}}>
       <Grid container spacing={3}>
-        {data.map((noteItem, index) => {
+        {temple.map((noteItem, index) => {
           return (
             <Grid item xs={12} sm={6} md={4}>
                <Note
