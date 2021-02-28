@@ -49,44 +49,47 @@ function Temple({match}) {
 
     var id = match.params.title;
     var obj = {
-        "templeId": id
+        "PK": id
     }
     const classes = useStyles();
     console.log(obj);
-    const [temple, setTemple] = useState(data[id]);
-    // const [loading, setLoading] = useState(true);
-    // const [deleted,setDeleted] = useState(false);
-    // useEffect(() => {
-    //     axios.post("https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/templeId",obj)
-    //         .then(res => {
-    //             console.log(res.data);
-    //             setTemple(res.data[0]);
-    //             setLoading(false);
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // },[]);
-    // var temple = obj[0];
-
-    // if(!temple) temple = data[0];
-    // const payload = {
-    //     templeId : temple.templeId,
-    //     location : temple.location
-    // };
+    const [temple, setTemple] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [deleted,setDeleted] = useState(false);
     
-    // const handleDelete = () => {
-    //     axios.delete('https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/remove', { data: payload })
-    //     .then(res => {
-    //         console.log(res);
-    //         setDeleted(true);
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //     });
-    // }
+    useEffect(() => {
+        axios
+          .post(
+            "https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/filter",
+            obj
+          )
+          .then((res) => {
+            console.log(res.data);
+            setTemple(res.data[0]);
+            setLoading(false);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    },[]);
+    
+    
+    const handleDelete = () => {
+        axios
+          .delete(
+            "https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/delete",
+            { data: obj }
+          )
+          .then((res) => {
+            console.log(res);
+            setDeleted(true);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    }
 
-    // if(deleted) return <Redirect to='/' />
+    if(deleted) return <Redirect to='/' />
 
     return (
       <div className="messi" style={{ padding: 8 }}>
@@ -94,47 +97,51 @@ function Temple({match}) {
           <Grid item xs={12}>
             <Header />
           </Grid>
-          {/* {loading ? <div>...loading</div> :  */}
-          <Grid item xs={12}>
-            <Tabs className="myClass" defaultActiveKey="home">
-              <Tab eventKey="home" title="Temple">
-                <Grid container>
-                  <Grid item xs={12} md={6}>
-                    <Card className={classes.root}>
-                      <CardMedia
-                        className={classes.media}
-                        image={temple.imgurl}
-                        title="Contemplative Reptile"
-                      />
-                    </Card>
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <div className="red">
-                      <h3 className="cont">{temple.title}</h3>
-                      <span className="cont">{temple.content}</span>
-                      <p className="cont">
-                        To read more{" "}
-                        <a
-                          href={temple.wikilink}
-                          target="_blank"
-                          rel="noopener noreferrer"
+          {loading ? (
+            <div>...loading</div>
+          ) : (
+            <Grid item xs={12}>
+              <Tabs className="myClass" defaultActiveKey="home">
+                <Tab eventKey="home" title="Temple">
+                  <Grid container>
+                    <Grid item xs={12} md={6}>
+                      <Card className={classes.root}>
+                        <CardMedia
+                          className={classes.media}
+                          image={temple.headerImageUrl}
+                          title="Contemplative Reptile"
+                        />
+                      </Card>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <div className="red">
+                        <h3 className="cont">{temple.templeName}</h3>
+                        <span className="cont">
+                          {temple.detailedDescription}
+                        </span>
+                        <p className="cont">
+                          To read more{" "}
+                          <a
+                            href={temple.websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Click here
+                          </a>
+                        </p>
+                      </div>
+                    </Grid>
+                    <Grid item container xs={12}>
+                      <div className={classes.but}>
+                        <Button
+                          className={classes.but1}
+                          variant="contained"
+                          disabled
+                          color="secondary"
                         >
-                          Click here
-                        </a>
-                      </p>
-                    </div>
-                  </Grid>
-                  <Grid item container xs={12}>
-                    <div className={classes.but}>
-                      <Button
-                        className={classes.but1}
-                        variant="contained"
-                        disabled
-                        color="secondary"
-                      >
-                        Delete
-                      </Button>
-                      <Link style={notestyle} to={`/update/${temple.templeId}`}>
+                          Delete
+                        </Button>
+                        {/* <Link style={notestyle} to={`/update/${temple.PK}`}>
                         <Button
                           variant="contained"
                           disabled
@@ -143,31 +150,32 @@ function Temple({match}) {
                         >
                           Update
                         </Button>
-                      </Link>
-                    </div>
+                      </Link> */}
+                      </div>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </Tab>
-              <Tab eventKey="contact" title="Contact">
-                <div className="contact">
-                  <p className="contact">
-                    <b>Preist Contact :-</b>NA
-                  </p>
-                  <p className="contact">
-                    <b>Famous Deity :-</b>
-                    {temple.deity}
-                  </p>
-                  <p className="contact">
-                    <b>Address :-</b>
-                    {temple.location}
-                  </p>
-                </div>
-              </Tab>
-              <Tab eventKey="pricing" title="Pricing" disabled>
-                <p>Free service for now :)</p>
-              </Tab>
-            </Tabs>
-          </Grid>
+                </Tab>
+                <Tab eventKey="contact" title="Contact">
+                  <div className="contact">
+                    <p className="contact">
+                      <b>Preist Contact :-</b>NA
+                    </p>
+                    <p className="contact">
+                      <b>Famous Deity :-</b>
+                      {temple.deity}
+                    </p>
+                    <p className="contact">
+                      <b>Address :-</b>
+                      {temple.address}
+                    </p>
+                  </div>
+                </Tab>
+                <Tab eventKey="pricing" title="Pricing" disabled>
+                  <p>Free service for now :)</p>
+                </Tab>
+              </Tabs>
+            </Grid>
+          )}
         </Grid>
       </div>
     );

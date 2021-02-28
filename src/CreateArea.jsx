@@ -12,17 +12,22 @@ import {
 
 export default function CreateArea() {
   const initialState = {
-    templeName: "",
     address: "",
-    shortDescription: "",
-    detailedDescription: "",
+    businessHours: "0",
     city: "",
-    state: "",
     country: "",
-    deity: "",
-    websiteUrl: "",
-    headerImageUrl: "",
     createdBy: "VK",
+    deity: "",
+    detailedDescription: "",
+    headerImageUrl: "",
+    isActive: "0",
+    isApproved: "0",
+    rank: "0",
+    region: "",
+    religion: "",
+    shortDescription: "",
+    templeName: "",
+    websiteUrl: "",
   };
   const [submitted, setsubmit] = useState(false);
   const [temple, setTemple] = useState(initialState);
@@ -69,10 +74,10 @@ export default function CreateArea() {
   const onSubmit = (data) => {
     console.log(errors);
     console.log(temple);
-    if (temple.country && temple.state) {
+    if (temple.country && temple.region) {
       axios
         .post(
-          "https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/add",
+          "https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/add",
           temple
         )
         .then((res) => {
@@ -228,6 +233,22 @@ export default function CreateArea() {
       <label><h5>Priest Email Address</h5></label><input className="create-note" onChange={handleChange} type="email" name="PEA" ref={register({pattern: {value : /^\S+@\S+$/i , message:"Invalid email"}})} />
       <div>{errors.PEA && <span className="error">{errors.PEA.message}</span>}</div> */}
         <label>
+          <h5>Religion</h5>
+        </label>
+        <input
+          className="create-note"
+          onChange={handleChange}
+          value={temple.religion}
+          type="text"
+          name="religion"
+          ref={register({ required: "Religion is required" })}
+        />
+        <div>
+          {errors.deity && (
+            <span className="error">{errors.religion.message}</span>
+          )}
+        </div>
+        <label>
           <h5>Famous Deity</h5>
         </label>
         <input
@@ -236,7 +257,7 @@ export default function CreateArea() {
           value={temple.deity}
           type="text"
           name="deity"
-          ref={register}
+          ref={register({ required: "Deity is required" })}
         />
         <div>
           {errors.deity && (

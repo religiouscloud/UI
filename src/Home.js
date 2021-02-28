@@ -204,15 +204,15 @@ export default function Home(props) {
         {temple.map((noteItem, index) => {
           return (
             <Grid item xs={12} sm={6} md={4}>
-               <Note
+              <Note
                 key={index}
-                id={index}
-                title={noteItem.title}
-                content={noteItem.content}
-                imgurl={noteItem.imgurl}
+                id={noteItem.PK}
+                title={noteItem.templeName}
+                content={noteItem.shortDescription}
+                imgurl={noteItem.headerImageUrl}
               />
             </Grid>
-           );
+          );
         })}
       </Grid>
     </div>

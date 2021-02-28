@@ -4,67 +4,28 @@ import "./styles.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Header from "./Header";
-import {
-  CountryDropdown,
-  RegionDropdown,
-  CountryRegionData,
-} from "react-country-region-selector";
 
 export default function Update({match}) {
   var id = match.params.templeId;
 
   var obj = {
-    templeId: id,
-  };
-
-  const initialState = {
-    templeName: "",
-    address: "",
-    shortDescription: "",
-    detailedDescription: "",
-    city: "",
-    state: "",
-    country: "",
-    deity: "",
-    websiteUrl: "",
-    headerImageUrl: "",
-    createdBy: "VK",
+    "PK": id,
   };
 
   const [submitted, setsubmit] = useState(false);
-  const [temple, setTemple] = useState(initialState);
+  const [temple, setTemple] = useState({});
   const { register, handleSubmit, errors } = useForm();
-  const [countrynot, setc] = useState(false);
-  const [regionnot, setr] = useState(false);
-
-  // useEffect(() => {
-  //     axios.post("https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/templeId",obj)
-  //         .then(res => {
-  //             console.log(res.data);
-  //             setTemple(res.data[0]);
-  //         })
-  //         .catch(err => {
-  //             console.log(err);
-  //         })
-  // },[]);
-
-  function selectCountry(val) {
-    setTemple((prevNote) => {
-      return {
-        ...prevNote,
-        country: val,
-      };
-    });
-  }
-
-  function selectRegion(val) {
-    setTemple((prevNote) => {
-      return {
-        ...prevNote,
-        state: val,
-      };
-    });
-  }
+ 
+  useEffect(() => {
+      axios.post("https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/filter",obj)
+          .then(res => {
+              console.log(res.data);
+              setTemple(res.data[0]);
+          })
+          .catch(err => {
+              console.log(err);
+          })
+  },[]);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -86,27 +47,20 @@ export default function Update({match}) {
   const onSubmit = (data) => {
     console.log(errors);
     console.log(temple);
-    if (temple.country && temple.state) {
-      axios
-        .post(
-          "https://qzsnu26p30.execute-api.us-east-2.amazonaws.com/dev/temples/add",
-          temple
-        )
-        .then((res) => {
-          console.log(res.data);
-          setsubmit(true);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else if (temple.country) {
-      setr(true);
-      setc(false);
-    } else {
-      setc(true);
-      setr(true);
-    }
+    axios
+      .put(
+        "https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/update",
+        {data : temple}
+      )
+      .then((res) => {
+        console.log(res.data);
+        setsubmit(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
   if (submitted) return <Redirect to="/templeSearch" />;
 
   return (
@@ -183,34 +137,6 @@ export default function Update({match}) {
           ref={register}
         />
         <label>
-          <h5>Country</h5>
-        </label>
-        <CountryDropdown
-          classes="dropdown"
-          onChange={(val) => selectCountry(val)}
-          value={temple.country}
-          type="text"
-          name="country"
-        />
-        <div>
-          {countrynot && <span className="error">Please select a country</span>}
-        </div>
-        <label>
-          <h5>State</h5>
-        </label>
-        <RegionDropdown
-          blankOptionLabel="No country selected"
-          country={temple.country}
-          classes="dropdown"
-          onChange={(val) => selectRegion(val)}
-          value={temple.state}
-          type="text"
-          name="state"
-        />
-        <div>
-          {regionnot && <span className="error">Please select a Region</span>}
-        </div>
-        <label>
           <h5>City</h5>
         </label>
         <input
@@ -240,10 +166,6 @@ export default function Update({match}) {
             <span className="error">{errors.address.message}</span>
           )}
         </div>
-        {/* <label><h5>Priest Contact Number</h5></label><input className="create-note" onChange={handleChange} value={temple.templeName} type="tel" name="PCN" ref={register({required: "Contact number is required", min: {value:6, message:"Invalid phone number"}, maxLength: {value:12, message:"Invalid phone number"}})} />
-      <div>{errors.PCN && <span className="error">{errors.PCN.message}</span>}</div>
-      <label><h5>Priest Email Address</h5></label><input className="create-note" onChange={handleChange} type="email" name="PEA" ref={register({pattern: {value : /^\S+@\S+$/i , message:"Invalid email"}})} />
-      <div>{errors.PEA && <span className="error">{errors.PEA.message}</span>}</div> */}
         <label>
           <h5>Famous Deity</h5>
         </label>
