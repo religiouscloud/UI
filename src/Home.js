@@ -71,13 +71,17 @@ export default function Home(props) {
   const [temple,setTemple] = useState([]);
   const [rel, setRel] = useState('');
   const [deity, setDeity] = useState('');
-  var obj = {
+  // var obj = {
     
-  };
+  // };
   useEffect( () => {
         axios
           .post(
-             "https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/all",obj
+             "https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/all",{
+              "LastEvaluatedKey": {
+                  "PK": "NULL"
+              }
+          }
           )
           .then((res) => {
             console.log(res);
