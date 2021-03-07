@@ -77,7 +77,7 @@ export default function Home(props) {
   useEffect( () => {
         axios
           .post(
-             "https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/all",{
+             "https://d9rssbbq68.execute-api.us-east-2.amazonaws.com/production2/temples/all",{
               "LastEvaluatedKey": {
                   "PK": "NULL"
               }
