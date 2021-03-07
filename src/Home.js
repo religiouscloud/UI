@@ -79,7 +79,7 @@ export default function Home(props) {
   useEffect( () => {
         axios
           .post(
-             "https://d9rssbbq68.execute-api.us-east-2.amazonaws.com/production2/temples/all", obj
+             "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/temples/all", obj
           )
           .then((res) => {
             console.log(res);
