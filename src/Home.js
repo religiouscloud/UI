@@ -89,6 +89,7 @@ export default function Home(props) {
 
   var obj = {
     LastEvaluatedKey: {
+<<<<<<< HEAD
       "GSI1-SK": "",
       "SK": "",
       "GSI1-PK": "",
@@ -118,6 +119,22 @@ export default function Home(props) {
               ...prev,
               LastEvaluatedKey : res.data.LastEvaluatedKey
             }
+=======
+      PK: "NULL"
+    }
+  };
+  useEffect( () => {
+        axios
+          .post(
+             "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/temples/all", obj
+          )
+          .then((res) => {
+            console.log(res);
+            setTemple(res.data.Items);
+          })
+          .catch((err) => {
+            console.log(err);
+>>>>>>> 2d68041cf2195bdce8061c1e6c271f2f2899a85f
           });
           console.log(res.data.LastEvaluatedKey);
           console.log(filter);
