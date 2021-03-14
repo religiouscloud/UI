@@ -271,12 +271,13 @@ export default function Home(props) {
                             onChange={(event) => {
                               const dc = DC;
                               dc.religion = event.target.value;
-                              setDC({
-                                ...DC,
-                                [event.target.name]: event.target.value,
-                              });
                               setFilter({
                                 ...filter,
+                                deity: "",
+                                [event.target.name]: event.target.value,
+                              });
+                              setDC({
+                                ...DC,
                                 [event.target.name]: event.target.value,
                               });
                               console.log(dc);

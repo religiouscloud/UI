@@ -84,123 +84,129 @@ export default function Update({match}) {
     <div>
       <Header />
       <h1 className="adding">Update Temple</h1>
-      <form className="create-note" onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          <h5>Temple Name</h5>
-        </label>
-        <input
-          className="create-note"
-          onChange={handleChange}
-          value={temple.templeName}
-          type="text"
-          name="templeName"
-          ref={register({
-            required: "Temple Name is required",
-            maxLength: { value: 80, message: "Name limit 80 characters" },
-          })}
-        />
-        <div>
-          {errors.templeName && (
-            <span className="error">{errors.templeName.message}</span>
-          )}
-        </div>
-        <label>
-          <h5>Description</h5>
-        </label>
-        <textarea
-          className="create-note"
-          onChange={handleChange}
-          value={temple.detailedDescription}
-          type="text"
-          name="detailedDescription"
-          ref={register({
-            required: "Description is required",
-            maxLength: {
-              value: 1000,
-              message: "Description limit 1000 characters",
-            },
-          })}
-        />
-        <div>
-          {errors.detailedDescription && (
-            <span className="error">{errors.detailedDescription.message}</span>
-          )}
-        </div>
-        <label>
-          <h5>Image Url</h5>
-        </label>
-        <input
-          className="create-note"
-          onChange={handleChange}
-          value={temple.headerImageUrl}
-          type="url"
-          name="headerImageUrl"
-          ref={register({ required: "Image url is required" })}
-        />
-        <div>
-          {errors.headerImageUrl && (
-            <span className="error">{errors.headerImageUrl.message}</span>
-          )}
-        </div>
-        <label>
-          <h5>Website</h5>
-        </label>
-        <input
-          className="create-note"
-          onChange={handleChange}
-          value={temple.websiteUrl}
-          type="url"
-          name="websiteUrl"
-          ref={register}
-        />
-        <label>
-          <h5>City</h5>
-        </label>
-        <input
-          className="create-note"
-          onChange={handleChange}
-          value={temple.address}
-          type="text"
-          name="city"
-          ref={register({ required: "City is required" })}
-        />
-        <div>
-          {errors.city && <span className="error">{errors.city.message}</span>}
-        </div>
-        <label>
-          <h5>Address</h5>
-        </label>
-        <input
-          className="create-note"
-          onChange={handleChange}
-          value={temple.address}
-          type="text"
-          name="address"
-          ref={register({ required: "Address is required" })}
-        />
-        <div>
-          {errors.address && (
-            <span className="error">{errors.address.message}</span>
-          )}
-        </div>
-        <label>
-          <h5>Famous Deity</h5>
-        </label>
-        <input
-          className="create-note"
-          onChange={handleChange}
-          value={temple.deity}
-          type="text"
-          name="deity"
-          ref={register}
-        />
-        <div>
-          {errors.deity && (
-            <span className="error">{errors.deity.message}</span>
-          )}
-        </div>
-        <input className="create-note-submit" type="submit" />
-      </form>
+      <div className="justify-center" style={{ padding: '10px' }}>
+        <form className="create-note" onSubmit={handleSubmit(onSubmit)}>
+          <label>
+            <h5>Temple Name</h5>
+          </label>
+          <input
+            className="create-note"
+            onChange={handleChange}
+            value={temple.templeName}
+            type="text"
+            name="templeName"
+            ref={register({
+              required: "Temple Name is required",
+              maxLength: { value: 80, message: "Name limit 80 characters" },
+            })}
+          />
+          <div>
+            {errors.templeName && (
+              <span className="error">{errors.templeName.message}</span>
+            )}
+          </div>
+          <label>
+            <h5>Description</h5>
+          </label>
+          <textarea
+            className="create-note"
+            onChange={handleChange}
+            value={temple.detailedDescription}
+            type="text"
+            name="detailedDescription"
+            ref={register({
+              required: "Description is required",
+              maxLength: {
+                value: 1000,
+                message: "Description limit 1000 characters",
+              },
+            })}
+          />
+          <div>
+            {errors.detailedDescription && (
+              <span className="error">
+                {errors.detailedDescription.message}
+              </span>
+            )}
+          </div>
+          <label>
+            <h5>Image Url</h5>
+          </label>
+          <input
+            className="create-note"
+            onChange={handleChange}
+            value={temple.headerImageUrl}
+            type="url"
+            name="headerImageUrl"
+            ref={register({ required: "Image url is required" })}
+          />
+          <div>
+            {errors.headerImageUrl && (
+              <span className="error">{errors.headerImageUrl.message}</span>
+            )}
+          </div>
+          <label>
+            <h5>Website</h5>
+          </label>
+          <input
+            className="create-note"
+            onChange={handleChange}
+            value={temple.websiteUrl}
+            type="url"
+            name="websiteUrl"
+            ref={register}
+          />
+          <label>
+            <h5>City</h5>
+          </label>
+          <input
+            className="create-note"
+            onChange={handleChange}
+            value={temple.address}
+            type="text"
+            name="city"
+            ref={register({ required: "City is required" })}
+          />
+          <div>
+            {errors.city && (
+              <span className="error">{errors.city.message}</span>
+            )}
+          </div>
+          <label>
+            <h5>Address</h5>
+          </label>
+          <input
+            className="create-note"
+            onChange={handleChange}
+            value={temple.address}
+            type="text"
+            name="address"
+            ref={register({ required: "Address is required" })}
+          />
+          <div>
+            {errors.address && (
+              <span className="error">{errors.address.message}</span>
+            )}
+          </div>
+          <label>
+            <h5>Famous Deity</h5>
+          </label>
+          <input
+            className="create-note"
+            onChange={handleChange}
+            value={temple.deity}
+            type="text"
+            name="deity"
+            ref={register}
+          />
+          <div>
+            {errors.deity && (
+              <span className="error">{errors.deity.message}</span>
+            )}
+          </div>
+          <input className="create-note-submit" type="submit" />
+        </form>
+      </div>
     </div>
   );
 }

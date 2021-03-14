@@ -26,6 +26,15 @@ body {
   background-image: url("https://www.canva.com/design/DAEJj63TsU0/omOIosSBBK7u6jK6Y6aMcA/view?utm_content=DAEJj63TsU0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink");
 }
 
+a:hover{
+  text-decoration: none !important;
+}
+
+.justify-center{
+  display: flex;
+  justify-content: center;
+}
+
 .carousel {
   background-image: inherit;
   position: absolute;
@@ -137,13 +146,22 @@ form.create-note label {
 
 form.create-note {
   position: relative;
-  width: 480px;
-  margin: 30px auto 20px auto;
+  width: 30em;
+  margin: 20px 0;
   background: #fff;
   padding: 15px;
   border-radius: 7px;
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+
 
 .filter {
   height: 100%;
@@ -155,6 +173,7 @@ form.create-note {
   font-family: 'Nunito', cursive;
   position: relative;
   color: white;
+  margin-top: 30px;
   text-align-last: center;
 }
 .error {
@@ -174,16 +193,13 @@ form.create-note textarea {
   font-family: 'Nunito', cursive;
   padding: 4px;
   margin-bottom: 10px;
-  margin-right: 300px;
   outline: none;
   font-size: 1.2em;
   resize: none;
 }
 .create-note-submit  {
   position: relative;
-  width: 520px;
   margin: 10px auto 20px auto;
-  bottom: -15px;
   background: #156dd1;
   color: #fff;
   border: none;
@@ -202,7 +218,6 @@ form.create-note textarea {
   font-family: 'Nunito', cursive;
   padding: 4px;
   margin-bottom: 10px;
-  margin-right: 300px;
   outline: none;
   font-size: 1.2em;
   resize: none;
@@ -219,7 +234,6 @@ form.create-note textarea {
   font-family: 'Nunito', cursive;
   padding: 4px;
   margin-bottom: 10px;
-  margin-right: 300px;
   outline: none;
   font-size: 1.2em;
   resize: none;
