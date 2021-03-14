@@ -4,6 +4,8 @@ import "./styles.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Header from "./Header";
+import Dropdown from "react-dropdown";
+
 import {
   CountryDropdown,
   RegionDropdown,
@@ -35,6 +37,8 @@ export default function CreateArea() {
   const [countrynot, setc] = useState(false);
   const [regionnot, setr] = useState(false);
 
+  
+
   function selectCountry(val) {
     setTemple((prevNote) => {
       return {
@@ -48,7 +52,7 @@ export default function CreateArea() {
     setTemple((prevNote) => {
       return {
         ...prevNote,
-        state: val,
+        region: val,
       };
     });
   }
@@ -77,7 +81,7 @@ export default function CreateArea() {
     if (temple.country && temple.region) {
       axios
         .post(
-          "https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/add",
+          "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/temples/add",
           temple
         )
         .then((res) => {
@@ -191,7 +195,7 @@ export default function CreateArea() {
           country={temple.country}
           classes="dropdown"
           onChange={(val) => selectRegion(val)}
-          value={temple.state}
+          value={temple.region}
           type="text"
           name="state"
         />

@@ -73,7 +73,7 @@ export default function Note(props) {
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}
-          image={props.imgurl}
+          image={props.img}
           title="Contemplative Reptile"
         />
         <CardContent>

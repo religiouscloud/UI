@@ -9,22 +9,38 @@ export default function Update({match}) {
   var id = match.params.templeId;
 
   var obj = {
-    "PK": id,
+    PK: id,
+    country: "",
+    region: "",
+    city: "",
+    religion: "",
+    deity: "",
+    templeName: "",
   };
-
   const [submitted, setsubmit] = useState(false);
   const [temple, setTemple] = useState({});
   const { register, handleSubmit, errors } = useForm();
  
   useEffect(() => {
-      axios.post("https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/filter",obj)
-          .then(res => {
-              console.log(res.data);
-              setTemple(res.data[0]);
-          })
-          .catch(err => {
-              console.log(err);
-          })
+      axios
+        .post(
+          "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/temples/filter",
+          obj
+        )
+        .then((res) => {
+          console.log(res.data);
+          setTemple(res.data[0]);
+          setTemple((prevNote) => {
+            return {
+              ...prevNote,
+              ["updatedBy"]: "Vidit",
+            };
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      console.log(temple);
   },[]);
 
   function handleChange(event) {
@@ -43,14 +59,15 @@ export default function Update({match}) {
         };
       });
     }
+    console.log(temple);
   }
   const onSubmit = (data) => {
     console.log(errors);
     console.log(temple);
     axios
       .put(
-        "https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/update",
-        {data : temple}
+        "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/temples/update",
+        temple 
       )
       .then((res) => {
         console.log(res.data);
@@ -66,7 +83,7 @@ export default function Update({match}) {
   return (
     <div>
       <Header />
-      <h1 className="adding">Add Temple</h1>
+      <h1 className="adding">Update Temple</h1>
       <form className="create-note" onSubmit={handleSubmit(onSubmit)}>
         <label>
           <h5>Temple Name</h5>

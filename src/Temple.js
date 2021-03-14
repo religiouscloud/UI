@@ -49,7 +49,13 @@ function Temple({match}) {
 
     var id = match.params.title;
     var obj = {
-        "PK": id
+        PK: id,
+        country: '',
+        region: '',
+        city: '',
+        religion: '',
+        deity: '',
+        templeName: ''
     }
     const classes = useStyles();
     console.log(obj);
@@ -60,7 +66,7 @@ function Temple({match}) {
     useEffect(() => {
         axios
           .post(
-            "https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/filter",
+            "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/temples/filter",
             obj
           )
           .then((res) => {
@@ -77,7 +83,7 @@ function Temple({match}) {
     const handleDelete = () => {
         axios
           .delete(
-            "https://gbd5npo4g1.execute-api.us-east-2.amazonaws.com/production/temples/delete",
+            "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/temples/delete",
             { data: obj }
           )
           .then((res) => {
@@ -89,7 +95,7 @@ function Temple({match}) {
           });
     }
 
-    if(deleted) return <Redirect to='/' />
+    if(deleted) return <Redirect to='/templeSearch' />
 
     return (
       <div className="messi" style={{ padding: 8 }}>
@@ -136,21 +142,22 @@ function Temple({match}) {
                         <Button
                           className={classes.but1}
                           variant="contained"
-                          disabled
+                          // disabled
                           color="secondary"
+                          onClick={handleDelete}
                         >
                           Delete
                         </Button>
-                        {/* <Link style={notestyle} to={`/update/${temple.PK}`}>
+                        <Link style={notestyle} to={`/update/${temple.PK}`}>
                         <Button
                           variant="contained"
-                          disabled
+                          // disabled
                           color="primary"
                           className={classes.but1}
                         >
                           Update
                         </Button>
-                      </Link> */}
+                      </Link>
                       </div>
                     </Grid>
                   </Grid>
