@@ -154,12 +154,6 @@ form.create-note {
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
 
-/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-}
 
 
 

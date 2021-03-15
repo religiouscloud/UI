@@ -37,7 +37,7 @@ export default function CreateArea() {
   const { register, handleSubmit, errors } = useForm();
   const [countrynot, setc] = useState(false);
   const [regionnot, setr] = useState(false);
-
+  const [deityList, setDL] = useState([]);
   
 
   function selectCountry(val) {
@@ -101,6 +101,18 @@ export default function CreateArea() {
     }
   };
   if (submitted) return <Redirect to="/templeSearch" />;
+
+  const dc = {
+    LastEvaluatedKey: {
+      "GSI1-SK": "",
+      "SK": "",
+      "GSI1-PK": "",
+      "PK": "",
+    },
+    religion: "",
+  };
+
+  
 
   return (
     <div style={{ padding: 12 }}>
@@ -254,30 +266,63 @@ export default function CreateArea() {
             <label>
               <h5>Religion</h5>
             </label>
-            <input
-              className="create-note"
-              onChange={handleChange}
+            <select
               value={temple.religion}
-              type="text"
               name="religion"
+              onChange={(event) => {
+                dc.religion = event.target.value;
+                setTemple({
+                  ...temple,
+                  deity: "",
+                  [event.target.name]: event.target.value,
+                });
+                console.log(dc);
+                axios
+                  .post(
+                    "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/deity/all",
+                    dc
+                  )
+                  .then((res) => {
+                    console.log(res);
+                    setDL([...res.data.Items]);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              }}
+              className="dropdown"
               ref={register({ required: "Religion is required" })}
-            />
+            >
+              <option value="">Select Religion</option>
+              <option value="Hinduism">Hinduism</option>
+              <option value="Christian">Christian</option>
+              <option value="Islam">Islam</option>
+            </select>
             <div>
-              {errors.deity && (
+              {errors.religion && (
                 <span className="error">{errors.religion.message}</span>
               )}
             </div>
             <label>
               <h5>Famous Deity</h5>
             </label>
-            <input
-              className="create-note"
-              onChange={handleChange}
+            <select
               value={temple.deity}
-              type="text"
               name="deity"
+              onChange={(event) => {
+                setTemple({
+                  ...temple,
+                  [event.target.name]: event.target.value,
+                });
+              }}
+              className="dropdown"
               ref={register({ required: "Deity is required" })}
-            />
+            >
+              <option value="">No Religion selected</option>
+              {deityList.map((item) => {
+                return <option value={item.deity}>{item.deity}</option>;
+              })}
+            </select>
             <div>
               {errors.deity && (
                 <span className="error">{errors.deity.message}</span>

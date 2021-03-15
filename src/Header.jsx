@@ -72,90 +72,112 @@ const Header = props => {
         pageURL: "/templeSearch"
     },
     {
-      menuTitle: "Add",
-      pageURL: "/create"
-    },
-    {
       menuTitle: "About",
       pageURL: "/about"
     }
   ];
 
     return (
-    <div className={classes.root} id="header">
-      <AppBar className={classes.appbar} elevation={0}>
-        <Toolbar className={classes.appbarWrapper}>
-          <h1 className={classes.appbarTitle}>
-            Temple<span>Search.</span>
-          </h1>
+      <div className={classes.root} id="header">
+        <AppBar className={classes.appbar} elevation={0}>
+          <Toolbar className={classes.appbarWrapper}>
+            <h1 className={classes.appbarTitle}>
+              Temple<span>Search.</span>
+            </h1>
 
-          {isMobile ? (
-            <>
-              <IconButton
-                edge="start"
-                className={classes.icon}
-                aria-label="menu"
-                onClick={handleMenu}
-              >
-                <MenuIcon className={classes.icon}/>
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right"
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right"
-                }}
-                open={open}
-                onClose={() => setAnchorEl(null)}
-              >
-                {menuItems.map(menuItem => {
-                  const { menuTitle, pageURL } = menuItem;
-                  return (
-                    <MenuItem onClick={() => handleMenuClick(pageURL)}>
-                      {menuTitle}
-                    </MenuItem>
-                  );
-                })}
-              </Menu>
-            </>
-          ) : (
-            <div >
-              <Button
-                className={classes.btn}
-                onClick={() => handleButtonClick("/")}
-              >
-                HOME
-              </Button>
-              <Button
-                className={classes.btn}
-                onClick={() => handleButtonClick("/templeSearch")}
-              >
-                TEMPLE SEARCH
-              </Button>
-              <Button
-                className={classes.btn}
-                onClick={() => handleButtonClick("/create")}
-              >
-                Add
-              </Button>
-              <Button
-                className={classes.btn}
-                onClick={() => handleButtonClick("/about")}
-              >
-                ABOUT
-              </Button>
-            </div>
-          )}
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+            {isMobile ? (
+              <>
+                <IconButton
+                  edge="start"
+                  className={classes.icon}
+                  aria-label="menu"
+                  onClick={handleMenu}
+                >
+                  <MenuIcon className={classes.icon} />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={open}
+                  onClose={() => setAnchorEl(null)}
+                >
+                  {menuItems.map((menuItem) => {
+                    const { menuTitle, pageURL } = menuItem;
+                    return (
+                      <MenuItem onClick={() => handleMenuClick(pageURL)}>
+                        {menuTitle}
+                      </MenuItem>
+                    );
+                  })}
+                  <MenuItem>
+                    <a
+                      href="https://forms.gle/pPoqVevYL2XWGdLP8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Add
+                    </a>
+                  </MenuItem>
+                  <MenuItem>
+                    <a
+                      href="https://forms.gle/GjMSgth65PNW7o2G6"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Feedback
+                    </a>
+                  </MenuItem>
+                </Menu>
+              </>
+            ) : (
+              <div>
+                <Button
+                  className={classes.btn}
+                  onClick={() => handleButtonClick("/")}
+                >
+                  HOME
+                </Button>
+                <Button
+                  className={classes.btn}
+                  onClick={() => handleButtonClick("/templeSearch")}
+                >
+                  TEMPLE SEARCH
+                </Button>
+                <a
+                  href="https://forms.gle/pPoqVevYL2XWGdLP8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className={classes.btn}>Add</Button>
+                </a>
+                <a
+                  href="https://forms.gle/GjMSgth65PNW7o2G6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className={classes.btn}>Feedback</Button>
+                </a>
+                <Button
+                  className={classes.btn}
+                  onClick={() => handleButtonClick("/about")}
+                >
+                  ABOUT
+                </Button>
+              </div>
+            )}
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
 }
 
 export default withRouter(Header);

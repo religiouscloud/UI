@@ -190,12 +190,18 @@ export default function Home(props) {
     console.log(filter);
     setScroll(true);
     setTemple([]);
+    setFilter((prev) => {
+      return {
+        ...prev,
+        LastEvaluatedKey: obj.LastEvaluatedKey,
+      };
+    });
     setPage(page + 1);
   }
      
   return (
     <div style={{ padding: 12 }}>
-      <Grid container spacing={2}>
+      <Grid container spacing={0}>
         <Grid item xs={12}>
           <Header />
         </Grid>
@@ -229,7 +235,7 @@ export default function Home(props) {
                           <h5>Country</h5>
                         </label>
                         <CountryDropdown
-                          classes="dropdown2"
+                          classes="dropdown"
                           onChange={(val) => selectCountry(val)}
                           value={filter.country}
                           type="text"
@@ -246,7 +252,7 @@ export default function Home(props) {
                         <RegionDropdown
                           blankOptionLabel="No Country selected"
                           country={filter.country}
-                          classes="dropdown2"
+                          classes="dropdown"
                           onChange={(val) => selectRegion(val)}
                           value={filter.region}
                           type="text"
@@ -265,68 +271,68 @@ export default function Home(props) {
                       <div>
                         <label>
                           <h5>Religion</h5>
-                          <select
-                            value={filter.religion}
-                            name="religion"
-                            onChange={(event) => {
-                              const dc = DC;
-                              dc.religion = event.target.value;
-                              setFilter({
-                                ...filter,
-                                deity: "",
-                                [event.target.name]: event.target.value,
-                              });
-                              setDC({
-                                ...DC,
-                                [event.target.name]: event.target.value,
-                              });
-                              console.log(dc);
-                              axios
-                                .post(
-                                  "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/deity/all",
-                                  dc
-                                )
-                                .then((res) => {
-                                  console.log(res);
-                                  setDL([...res.data.Items]);
-                                })
-                                .catch((err) => {
-                                  console.log(err);
-                                });
-                            }}
-                            className="dropdown2"
-                          >
-                            <option value="">Select Religion</option>
-                            <option value="Hinduism">Hinduism</option>
-                            <option value="Christian">Christian</option>
-                            <option value="Islam">Islam</option>
-                          </select>
                         </label>
+                        <select
+                          value={filter.religion}
+                          name="religion"
+                          onChange={(event) => {
+                            const dc = DC;
+                            dc.religion = event.target.value;
+                            setFilter({
+                              ...filter,
+                              deity: "",
+                              [event.target.name]: event.target.value,
+                            });
+                            setDC({
+                              ...DC,
+                              [event.target.name]: event.target.value,
+                            });
+                            console.log(dc);
+                            axios
+                              .post(
+                                "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/deity/all",
+                                dc
+                              )
+                              .then((res) => {
+                                console.log(res);
+                                setDL([...res.data.Items]);
+                              })
+                              .catch((err) => {
+                                console.log(err);
+                              });
+                          }}
+                          className="dropdown"
+                        >
+                          <option value="">Select Religion</option>
+                          <option value="Hinduism">Hinduism</option>
+                          <option value="Christian">Christian</option>
+                          <option value="Islam">Islam</option>
+                        </select>
                       </div>
                     </Grid>
                     <Grid item xs={12} sm={6} md={3}>
                       <div>
                         <label>
                           <h5>Deity</h5>
-                          <select
-                            value={filter.deity}
-                            name="deity"
-                            onChange={(event) => {
-                              setFilter({
-                                ...filter,
-                                [event.target.name]: event.target.value,
-                              });
-                            }}
-                            className="dropdown2"
-                          >
-                            <option value="">No Religion selected</option>
-                            {deityList.map((item) => {
-                              return (
-                                <option value={item.deity}>{item.deity}</option>
-                              );
-                            })}
-                          </select>
                         </label>
+                        <select
+                          value={filter.deity}
+                          name="deity"
+                          onChange={(event) => {
+                            setFilter({
+                              ...filter,
+                              [event.target.name]: event.target.value,
+                            });
+                          }}
+                          className="dropdown"
+                        >
+                          <option value="">No Religion selected</option>
+                          {deityList.map((item) => {
+                            return (
+                              <option value={item.deity}>{item.deity}</option>
+                            );
+                          })}
+                        </select>
                       </div>
                     </Grid>
                   </Grid>

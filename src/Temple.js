@@ -177,9 +177,6 @@ function Temple({match}) {
                     </p>
                   </div>
                 </Tab>
-                <Tab eventKey="pricing" title="Pricing" disabled>
-                  <p>Free service for now :)</p>
-                </Tab>
               </Tabs>
             </Grid>
           )}

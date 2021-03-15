@@ -96,10 +96,6 @@ const Header = props => {
         pageURL: "/templeSearch"
       },
     {
-      menuTitle: "Add",
-      pageURL: "/create"
-    },
-    {
       menuTitle: "About",
       pageURL: "/about"
     }
@@ -112,9 +108,7 @@ const Header = props => {
     <div className={classes.root} id="header">
       <AppBar className={classes.appbar} elevation={0}>
         <Toolbar className={classes.appbarWrapper}>
-          <h1 className={classes.appbarTitle}>
-            TempleSearch
-          </h1>
+          <h1 className={classes.appbarTitle}>TempleSearch</h1>
 
           {isMobile ? (
             <>
@@ -124,24 +118,24 @@ const Header = props => {
                 aria-label="menu"
                 onClick={handleMenu}
               >
-                <MenuIcon className={classes.icon}/>
+                <MenuIcon className={classes.icon} />
               </IconButton>
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
                   vertical: "top",
-                  horizontal: "right"
+                  horizontal: "right",
                 }}
                 keepMounted
                 transformOrigin={{
                   vertical: "top",
-                  horizontal: "right"
+                  horizontal: "right",
                 }}
                 open={open}
                 onClose={() => setAnchorEl(null)}
               >
-                {menuItems.map(menuItem => {
+                {menuItems.map((menuItem) => {
                   const { menuTitle, pageURL } = menuItem;
                   return (
                     <MenuItem onClick={() => handleMenuClick(pageURL)}>
@@ -149,10 +143,28 @@ const Header = props => {
                     </MenuItem>
                   );
                 })}
+                <MenuItem>
+                  <a
+                    href="https://forms.gle/pPoqVevYL2XWGdLP8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Add
+                  </a>
+                </MenuItem>
+                <MenuItem>
+                  <a
+                    href="https://forms.gle/GjMSgth65PNW7o2G6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Feedback
+                  </a>
+                </MenuItem>
               </Menu>
             </>
           ) : (
-            <div >
+            <div>
               <Button
                 className={classes.btn}
                 onClick={() => handleButtonClick("/")}
@@ -165,12 +177,20 @@ const Header = props => {
               >
                 TEMPLE SEARCH
               </Button>
-              <Button
-                className={classes.btn}
-                onClick={() => handleButtonClick("/create")}
+              <a
+                href="https://forms.gle/pPoqVevYL2XWGdLP8"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Add
-              </Button>
+                <Button className={classes.btn}>Add</Button>
+              </a>
+              <a
+                href="https://forms.gle/GjMSgth65PNW7o2G6"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className={classes.btn}>Feedback</Button>
+              </a>
               <Button
                 className={classes.btn}
                 onClick={() => handleButtonClick("/about")}
@@ -192,7 +212,14 @@ const Header = props => {
             Welcome to <br />
             Temple<span className={classes.colorText}>Search.</span>
           </h1>
-          <p className={classes.content}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu</p>
+          <p className={classes.content}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatu
+          </p>
           <Scroll to="place-to-visit" smooth={true}>
             <IconButton>
               <ExpandMoreIcon className={classes.goDown} />
