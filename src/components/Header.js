@@ -7,6 +7,7 @@ import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { withRouter } from "react-router-dom";
+import StrikethroughSSharpIcon from "@material-ui/icons/StrikethroughSSharp";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Link as Scroll } from 'react-scroll';
 
@@ -89,15 +90,23 @@ const Header = props => {
   const menuItems = [
     {
       menuTitle: "Home",
-      pageURL: "/"
+      pageURL: "/",
     },
     {
-        menuTitle: "TempleSearch",
-        pageURL: "/templeSearch"
-      },
+      menuTitle: "TempleSearch",
+      pageURL: "/templeSearch",
+    },
+    {
+      menuTitle: "Add Temple",
+      pageURL: "/create",
+    },
+    {
+      menuTitle: "Feedback",
+      pageURL: "/feedback",
+    },
     {
       menuTitle: "About",
-      pageURL: "/about"
+      pageURL: "/about",
     }
   ];
 
@@ -108,7 +117,10 @@ const Header = props => {
     <div className={classes.root} id="header">
       <AppBar className={classes.appbar} elevation={0}>
         <Toolbar className={classes.appbarWrapper}>
-          <h1 className={classes.appbarTitle}>TempleSearch</h1>
+          <h1 className={classes.appbarTitle}>
+            <StrikethroughSSharpIcon style={{ fontSize: 45 }} />
+            ReligiousCloud
+          </h1>
 
           {isMobile ? (
             <>
@@ -143,7 +155,7 @@ const Header = props => {
                     </MenuItem>
                   );
                 })}
-                <MenuItem>
+                {/* <MenuItem>
                   <a
                     href="https://forms.gle/pPoqVevYL2XWGdLP8"
                     target="_blank"
@@ -151,8 +163,8 @@ const Header = props => {
                   >
                     Add
                   </a>
-                </MenuItem>
-                <MenuItem>
+                </MenuItem> */}
+                {/* <MenuItem>
                   <a
                     href="https://forms.gle/GjMSgth65PNW7o2G6"
                     target="_blank"
@@ -160,7 +172,7 @@ const Header = props => {
                   >
                     Feedback
                   </a>
-                </MenuItem>
+                </MenuItem> */}
               </Menu>
             </>
           ) : (
@@ -177,20 +189,32 @@ const Header = props => {
               >
                 TEMPLE SEARCH
               </Button>
-              <a
+              <Button
+                className={classes.btn}
+                onClick={() => handleButtonClick("/create")}
+              >
+                Add Temple
+              </Button>
+              <Button
+                className={classes.btn}
+                onClick={() => handleButtonClick("/feedback")}
+              >
+                Feedback
+              </Button>
+              {/* <a
                 href="https://forms.gle/pPoqVevYL2XWGdLP8"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className={classes.btn}>Add</Button>
-              </a>
+                <Button className={classes.btn}>Add Temple</Button>
+              </a> 
               <a
                 href="https://forms.gle/GjMSgth65PNW7o2G6"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Button className={classes.btn}>Feedback</Button>
-              </a>
+              </a> */}
               <Button
                 className={classes.btn}
                 onClick={() => handleButtonClick("/about")}
@@ -210,15 +234,12 @@ const Header = props => {
         <div className={classes.container}>
           <h1 className={classes.title}>
             Welcome to <br />
-            Temple<span className={classes.colorText}>Search.</span>
+            Religious<span className={classes.colorText}>Cloud</span>
           </h1>
           <p className={classes.content}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatu
+            Welcome to the Religious Cloud. Your place to find spiritual peace,
+            explore cultural interest, and practice your faiths and belifs
+            online.
           </p>
           <Scroll to="place-to-visit" smooth={true}>
             <IconButton>

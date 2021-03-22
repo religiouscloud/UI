@@ -124,7 +124,7 @@ export default function CreateArea() {
           <h1 className="adding">Add Temple</h1>
         </Grid>
         <Grid item xs={12} className="justify-center">
-          <form className="create-note" onSubmit={handleSubmit(onSubmit)}>
+          {/* <form className="create-note" onSubmit={handleSubmit(onSubmit)}>
             <label>
               <h5>Temple Name</h5>
             </label>
@@ -259,10 +259,6 @@ export default function CreateArea() {
                 <span className="error">{errors.address.message}</span>
               )}
             </div>
-            {/* <label><h5>Priest Contact Number</h5></label><input className="create-note" onChange={handleChange} value={temple.templeName} type="tel" name="PCN" ref={register({required: "Contact number is required", min: {value:6, message:"Invalid phone number"}, maxLength: {value:12, message:"Invalid phone number"}})} />
-      <div>{errors.PCN && <span className="error">{errors.PCN.message}</span>}</div>
-      <label><h5>Priest Email Address</h5></label><input className="create-note" onChange={handleChange} type="email" name="PEA" ref={register({pattern: {value : /^\S+@\S+$/i , message:"Invalid email"}})} />
-      <div>{errors.PEA && <span className="error">{errors.PEA.message}</span>}</div> */}
             <label>
               <h5>Religion</h5>
             </label>
@@ -329,7 +325,17 @@ export default function CreateArea() {
               )}
             </div>
             <input className="create-note-submit" type="submit" />
-          </form>
+          </form> */}
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdjKb32ohxTFOWRec5PrD949F3jSTXY3XJMB9Y_RwLhyF29lA/viewform?embedded=true"
+            width="640"
+            height="1845"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+          >
+            Loading…
+          </iframe>
         </Grid>
       </Grid>
     </div>

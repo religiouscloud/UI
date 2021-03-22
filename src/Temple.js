@@ -137,7 +137,7 @@ function Temple({match}) {
                         </p>
                       </div>
                     </Grid>
-                    <Grid item container xs={12}>
+                    {/* <Grid item container xs={12}>
                       <div className={classes.but}>
                         <Button
                           className={classes.but1}
@@ -159,7 +159,7 @@ function Temple({match}) {
                         </Button>
                       </Link>
                       </div>
-                    </Grid>
+                    </Grid> */}
                   </Grid>
                 </Tab>
                 <Tab eventKey="contact" title="Contact">

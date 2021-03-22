@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import './App.css';
 import Home from "./Home";
-import Pagination from "./Pagination";
-import {data} from "./data";
 import Footer from "./Footer";
 import CreateArea from "./CreateArea";
+import FeedBack from "./FeedBack";
 import Update from "./Update";
-import Contact from './Contact'
 import { BrowserRouter as Router,Switch, Route } from "react-router-dom";
 import Temple from "./Temple";
 import LandingPage from "./landingPage";
 import About from "./About";
-import Header from './Header';
 
 function App() {
   // const [notes, setNotes] = useState(data);
@@ -49,6 +46,7 @@ function App() {
             <Route path="/templeSearch" exact component={Home} />
             <Route path="/about" exact component={About} />
             <Route path="/create" exact component={CreateArea} />
+            <Route path="/feedback" exact component={FeedBack} />
             <Route path="/update/:templeId" exact component={Update} />
             <Route path="/:title" component={Temple} />
           </Switch>

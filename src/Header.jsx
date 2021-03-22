@@ -4,6 +4,7 @@ import { AppBar, IconButton, Toolbar } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import StrikethroughSSharpIcon from "@material-ui/icons/StrikethroughSSharp";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { withRouter } from "react-router-dom";
@@ -65,15 +66,23 @@ const Header = props => {
   const menuItems = [
     {
       menuTitle: "Home",
-      pageURL: "/"
+      pageURL: "/",
     },
     {
-        menuTitle: "TempleSearch",
-        pageURL: "/templeSearch"
+      menuTitle: "TempleSearch",
+      pageURL: "/templeSearch",
+    },
+    {
+      menuTitle: "Add Temple",
+      pageURL: "/create",
+    },
+    {
+      menuTitle: "Feedback",
+      pageURL: "/feedback",
     },
     {
       menuTitle: "About",
-      pageURL: "/about"
+      pageURL: "/about",
     }
   ];
 
@@ -82,7 +91,8 @@ const Header = props => {
         <AppBar className={classes.appbar} elevation={0}>
           <Toolbar className={classes.appbarWrapper}>
             <h1 className={classes.appbarTitle}>
-              Temple<span>Search.</span>
+              <StrikethroughSSharpIcon style={{ fontSize: 45 }} />
+              ReligiousCloud
             </h1>
 
             {isMobile ? (
@@ -118,7 +128,7 @@ const Header = props => {
                       </MenuItem>
                     );
                   })}
-                  <MenuItem>
+                  {/* <MenuItem>
                     <a
                       href="https://forms.gle/pPoqVevYL2XWGdLP8"
                       target="_blank"
@@ -126,7 +136,7 @@ const Header = props => {
                     >
                       Add
                     </a>
-                  </MenuItem>
+                  </MenuItem> 
                   <MenuItem>
                     <a
                       href="https://forms.gle/GjMSgth65PNW7o2G6"
@@ -135,7 +145,7 @@ const Header = props => {
                     >
                       Feedback
                     </a>
-                  </MenuItem>
+                  </MenuItem>*/}
                 </Menu>
               </>
             ) : (
@@ -152,20 +162,32 @@ const Header = props => {
                 >
                   TEMPLE SEARCH
                 </Button>
-                <a
+                <Button
+                  className={classes.btn}
+                  onClick={() => handleButtonClick("/create")}
+                >
+                  Add Temple
+                </Button>
+                <Button
+                  className={classes.btn}
+                  onClick={() => handleButtonClick("/feedback")}
+                >
+                  Feedback
+                </Button>
+                {/* <a
                   href="https://forms.gle/pPoqVevYL2XWGdLP8"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button className={classes.btn}>Add</Button>
-                </a>
+                  <Button className={classes.btn}>Add Temple</Button>
+                </a> 
                 <a
                   href="https://forms.gle/GjMSgth65PNW7o2G6"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Button className={classes.btn}>Feedback</Button>
-                </a>
+                </a> */}
                 <Button
                   className={classes.btn}
                   onClick={() => handleButtonClick("/about")}
