@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header'
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,11 +14,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     width: "80%",
     margin: "0 auto",
-    marginTop: "5%",
+    marginTop: "4%",
     alignItems: "center",
     fontFamily: "Nunito",
     color: "#fff",
     fontSize: "1.4rem",
+  },
+  heading: {
+    marginBottom: "20px",
+    fontSize: "3rem",
   },
 }));
 
@@ -28,6 +32,7 @@ function About() {
       <div>
         <Header />
         <div className={classes.content}>
+          <h1 className={classes.heading}>About us</h1>
           <p>
             This is a humble beginning for us, but we hope to bring together all
             religions, faiths, cultures, and thoughts related instituations and

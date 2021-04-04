@@ -9,60 +9,71 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { withRouter } from "react-router-dom";
 import StrikethroughSSharpIcon from "@material-ui/icons/StrikethroughSSharp";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Link as Scroll } from 'react-scroll';
+import { Link } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-    fontFamily: 'Nunito',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    fontFamily: "Nunito",
   },
   appbar: {
-    background: 'rgb(18, 107, 158)',
-    position: 'absolute',
+    background: "rgb(18, 107, 158)",
+    position: "absolute",
     zIndex: 100,
-    height: '70px',
+    height: "70px",
   },
-  btn : {
-    margin: '0 20px',
-    fontFamily: 'Nunito',
-    color: '#fff',
+  btn: {
+    margin: "0 20px",
+    fontFamily: "Nunito",
+    color: "#fff",
   },
   appbarWrapper: {
-    width: '80%',
-    margin: 'auto auto',
+    width: "80%",
+    margin: "auto auto",
   },
   content: {
-    justifyContent: 'center',
-    width: '80%',
-    margin: '0 auto',
-    alignItems: 'center',
-    fontFamily: 'Nunito',
-    color: '#fff',
-    fontSize: '1.2rem',
+    justifyContent: "center",
+    width: "80%",
+    margin: "0 auto",
+    alignItems: "center",
+    fontFamily: "Nunito",
+    color: "#fff",
+    fontSize: "1.2rem",
   },
   appbarTitle: {
-    flexGrow: '1',
+    flexGrow: "1",
+    fontSize: "2.0rem",
   },
   icon: {
-    color: '#0f4ead',
-    fontSize: '2rem',
+    color: "#0f4ead",
+    fontSize: "2rem",
   },
   colorText: {
-    color: '#0f4ead',
+    color: "#0f4ead",
   },
   container: {
-    textAlign: 'center',
+    textAlign: "center",
   },
   title: {
-    color: '#fff',
-    fontSize: '3.0rem',
+    color: "#fff",
+    fontSize: "2.5rem",
   },
   goDown: {
-    color: '#0f4ead',
-    fontSize: '4rem',
+    color: "#0f4ead",
+    fontSize: "4rem",
+  },
+  d: {
+    justifyContent: "center",
+    width: "100%",
+    margin: "0 auto",
+    textAlign: "center",
+    alignItems: "center",
+    fontFamily: "Nunito",
+    fontSize: "1.5rem",
   },
 }));
 const Header = props => {
@@ -118,7 +129,7 @@ const Header = props => {
       <AppBar className={classes.appbar} elevation={0}>
         <Toolbar className={classes.appbarWrapper}>
           <h1 className={classes.appbarTitle}>
-            <StrikethroughSSharpIcon style={{ fontSize: 45 }} />
+            <StrikethroughSSharpIcon style={{ fontSize: 35 }} />
             ReligiousCloud
           </h1>
 
@@ -241,11 +252,16 @@ const Header = props => {
             explore cultural interest, and practice your faiths and belifs
             online.
           </p>
-          <Scroll to="place-to-visit" smooth={true}>
-            <IconButton>
-              <ExpandMoreIcon className={classes.goDown} />
-            </IconButton>
-          </Scroll>
+          <IconButton>
+            <ExpandMoreIcon className={classes.goDown} />
+          </IconButton>
+          <div className={classes.d}>
+            <Link to="/templeSearch">
+              <Button size="large" variant="contained" color="primary">
+                Begin Here
+              </Button>
+            </Link>
+          </div>
         </div>
       </Collapse>
     </div>

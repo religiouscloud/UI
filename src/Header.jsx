@@ -11,35 +11,36 @@ import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '10vh',
-    fontFamily: 'Nunito',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "10vh",
+    fontFamily: "Nunito",
   },
   appbar: {
-    background: 'rgb(18, 107, 158)',
-    height: '70px',
+    background: "rgb(18, 107, 158)",
+    height: "70px",
   },
-  btn : {
-    margin: '0 20px',
-    fontFamily: 'Nunito',
-    color: '#fff',
+  btn: {
+    margin: "0 20px",
+    fontFamily: "Nunito",
+    color: "#fff",
   },
   appbarWrapper: {
-    width: '80%',
-    margin: 'auto auto',
+    width: "80%",
+    margin: "auto auto",
   },
-  
+
   appbarTitle: {
-    flexGrow: '1',
+    flexGrow: "1",
+    fontSize: "2rem",
   },
   icon: {
-    color: '#0f4ead',
-    fontSize: '2rem',
+    color: "#0f4ead",
+    fontSize: "2rem",
   },
   colorText: {
-    color: '#0f4ead',
+    color: "#0f4ead",
   },
 }));
 const Header = props => {
@@ -91,7 +92,7 @@ const Header = props => {
         <AppBar className={classes.appbar} elevation={0}>
           <Toolbar className={classes.appbarWrapper}>
             <h1 className={classes.appbarTitle}>
-              <StrikethroughSSharpIcon style={{ fontSize: 45 }} />
+              <StrikethroughSSharpIcon style={{ fontSize: 35 }} />
               ReligiousCloud
             </h1>
 
