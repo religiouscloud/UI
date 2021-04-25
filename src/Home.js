@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Note from "./Note";
 import Divider from "@material-ui/core/Divider";
@@ -90,8 +91,8 @@ export default function Home(props) {
 
   const [scroll, setScroll] = useState(true);
   const page_number=1;
-
   const [page, setPage] = useState(page_number);
+  
   useEffect(() => {
     if(scroll === true){
     console.log(filter);

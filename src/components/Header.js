@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
   },
   appbarWrapper: {
-    width: "80%",
+    width: "95%",
     margin: "auto auto",
   },
   content: {
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appbarTitle: {
     flexGrow: "1",
-    fontSize: "2.0rem",
+    fontSize: "1.7rem",
   },
   icon: {
     color: "#0f4ead",
@@ -129,7 +129,7 @@ const Header = props => {
       <AppBar className={classes.appbar} elevation={0}>
         <Toolbar className={classes.appbarWrapper}>
           <h1 className={classes.appbarTitle}>
-            <StrikethroughSSharpIcon style={{ fontSize: 35 }} />
+            <StrikethroughSSharpIcon style={{ fontSize: 30 }} />
             ReligiousCloud
           </h1>
 

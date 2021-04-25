@@ -33,7 +33,7 @@ export default function Update({match}) {
           setTemple((prevNote) => {
             return {
               ...prevNote,
-              ["updatedBy"]: "Vidit",
+              "updatedBy": "Vidit",
             };
           });
         })
@@ -41,7 +41,7 @@ export default function Update({match}) {
           console.log(err);
         });
       console.log(temple);
-  },[]);
+  });
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -55,7 +55,7 @@ export default function Update({match}) {
       setTemple((prevNote) => {
         return {
           ...prevNote,
-          ["shortDescription"]: value,
+          "shortDescription": value,
         };
       });
     }

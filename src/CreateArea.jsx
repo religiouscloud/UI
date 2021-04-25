@@ -1,116 +1,117 @@
-import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+/* eslint-disable jsx-a11y/iframe-has-title */
+import React from "react";
+// import { Redirect } from "react-router-dom";
 import "./styles.css";
-import { useForm } from "react-hook-form";
-import axios from "axios";
+// import { useForm } from "react-hook-form";
+// import axios from "axios";
 import Header from "./Header";
 import { Grid } from "@material-ui/core";
-import Dropdown from "react-dropdown";
+// import Dropdown from "react-dropdown";
 
-import {
-  CountryDropdown,
-  RegionDropdown,
-  CountryRegionData,
-} from "react-country-region-selector";
+// import {
+//   CountryDropdown,
+//   RegionDropdown,
+//   CountryRegionData,
+// } from "react-country-region-selector";
 
 export default function CreateArea() {
-  const initialState = {
-    address: "",
-    businessHours: "0",
-    city: "",
-    country: "",
-    createdBy: "VK",
-    deity: "",
-    detailedDescription: "",
-    headerImageUrl: "",
-    isActive: "0",
-    isApproved: "0",
-    rank: "0",
-    region: "",
-    religion: "",
-    shortDescription: "",
-    templeName: "",
-    websiteUrl: "",
-  };
-  const [submitted, setsubmit] = useState(false);
-  const [temple, setTemple] = useState(initialState);
-  const { register, handleSubmit, errors } = useForm();
-  const [countrynot, setc] = useState(false);
-  const [regionnot, setr] = useState(false);
-  const [deityList, setDL] = useState([]);
+  // const initialState = {
+  //   address: "",
+  //   businessHours: "0",
+  //   city: "",
+  //   country: "",
+  //   createdBy: "VK",
+  //   deity: "",
+  //   detailedDescription: "",
+  //   headerImageUrl: "",
+  //   isActive: "0",
+  //   isApproved: "0",
+  //   rank: "0",
+  //   region: "",
+  //   religion: "",
+  //   shortDescription: "",
+  //   templeName: "",
+  //   websiteUrl: "",
+  // };
+  // const [submitted, setsubmit] = useState(false);
+  // const [temple, setTemple] = useState(initialState);
+  // const { register, handleSubmit, errors } = useForm();
+  // const [countrynot, setc] = useState(false);
+  // const [regionnot, setr] = useState(false);
+  // const [deityList, setDL] = useState([]);
   
 
-  function selectCountry(val) {
-    setTemple((prevNote) => {
-      return {
-        ...prevNote,
-        country: val,
-      };
-    });
-  }
+  // function selectCountry(val) {
+  //   setTemple((prevNote) => {
+  //     return {
+  //       ...prevNote,
+  //       country: val,
+  //     };
+  //   });
+  // }
 
-  function selectRegion(val) {
-    setTemple((prevNote) => {
-      return {
-        ...prevNote,
-        region: val,
-      };
-    });
-  }
+  // function selectRegion(val) {
+  //   setTemple((prevNote) => {
+  //     return {
+  //       ...prevNote,
+  //       region: val,
+  //     };
+  //   });
+  // }
 
 
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setTemple((prevNote) => {
-      return {
-        ...prevNote,
-        [name]: value,
-      };
-    });
-    if (name === "detailedDescription") {
-      setTemple((prevNote) => {
-        return {
-          ...prevNote,
-          ["shortDescription"]: value,
-        };
-      });
-    }
-  }
-  const onSubmit = (data) => {
-    console.log(errors);
-    console.log(temple);
-    if (temple.country && temple.region) {
-      axios
-        .post(
-          "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/temples/add",
-          temple
-        )
-        .then((res) => {
-          console.log(res.data);
-          setsubmit(true);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else if (temple.country) {
-      setr(true);
-      setc(false);
-    } else {
-      setc(true);
-      setr(true);
-    }
-  };
-  if (submitted) return <Redirect to="/templeSearch" />;
+  // function handleChange(event) {
+  //   const { name, value } = event.target;
+  //   setTemple((prevNote) => {
+  //     return {
+  //       ...prevNote,
+  //       [name]: value,
+  //     };
+  //   });
+  //   if (name === "detailedDescription") {
+  //     setTemple((prevNote) => {
+  //       return {
+  //         ...prevNote,
+  //         ["shortDescription"]: value,
+  //       };
+  //     });
+  //   }
+  // }
+  // const onSubmit = (data) => {
+  //   console.log(errors);
+  //   console.log(temple);
+  //   if (temple.country && temple.region) {
+  //     axios
+  //       .post(
+  //         "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/temples/add",
+  //         temple
+  //       )
+  //       .then((res) => {
+  //         console.log(res.data);
+  //         setsubmit(true);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   } else if (temple.country) {
+  //     setr(true);
+  //     setc(false);
+  //   } else {
+  //     setc(true);
+  //     setr(true);
+  //   }
+  // };
+  // if (submitted) return <Redirect to="/templeSearch" />;
 
-  const dc = {
-    LastEvaluatedKey: {
-      "GSI1-SK": "",
-      "SK": "",
-      "GSI1-PK": "",
-      "PK": "",
-    },
-    religion: "",
-  };
+  // const dc = {
+  //   LastEvaluatedKey: {
+  //     "GSI1-SK": "",
+  //     "SK": "",
+  //     "GSI1-PK": "",
+  //     "PK": "",
+  //   },
+  //   religion: "",
+  // };
 
   
 

@@ -1,25 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState,useEffect} from 'react'
 import axios from 'axios';
-import Container from '@material-ui/core/Container';
-import {data} from './data';
-import Button from '@material-ui/core/Button';
 import { Grid } from '@material-ui/core';
-import {Redirect} from 'react-router-dom'
+// import {Redirect} from 'react-router-dom'
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import "@ui5/webcomponents/dist/TabContainer";
 import "@ui5/webcomponents/dist/Tab"; 
 import "@ui5/webcomponents/dist/TabSeparator";
 import "@ui5/webcomponents/dist/Carousel.js";
 import Tabs from 'react-bootstrap/Tabs';
-import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Tab from 'react-bootstrap/Tab'
-import Carousel from 'react-bootstrap/Carousel'
 import "@ui5/webcomponents/dist/Button";
 import Header from './Header';
-import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
@@ -40,9 +34,6 @@ const useStyles = makeStyles({
   }
 });
   
-const notestyle = {
-  color: "white",
-};
 
   
 function Temple({match}) {
@@ -61,7 +52,7 @@ function Temple({match}) {
     console.log(obj);
     const [temple, setTemple] = useState({});
     const [loading, setLoading] = useState(true);
-    const [deleted,setDeleted] = useState(false);
+    // const [deleted,setDeleted] = useState(false);
     
     useEffect(() => {
         axios
@@ -80,22 +71,22 @@ function Temple({match}) {
     },[]);
     
     
-    const handleDelete = () => {
-        axios
-          .delete(
-            "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/temples/delete",
-            { data: obj }
-          )
-          .then((res) => {
-            console.log(res);
-            setDeleted(true);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-    }
+    // const handleDelete = () => {
+    //     axios
+    //       .delete(
+    //         "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/temples/delete",
+    //         { data: obj }
+    //       )
+    //       .then((res) => {
+    //         console.log(res);
+    //         setDeleted(true);
+    //       })
+    //       .catch((err) => {
+    //         console.log(err);
+    //       });
+    // }
 
-    if(deleted) return <Redirect to='/templeSearch' />
+    // if(deleted) return <Redirect to='/templeSearch' />
 
     return (
       <div className="messi" style={{ padding: 8 }}>
