@@ -198,7 +198,7 @@ const Header = props => {
                 className={classes.btn}
                 onClick={() => handleButtonClick("/templeSearch")}
               >
-                TEMPLE SEARCH
+                TEMPLES
               </Button>
               <Button
                 className={classes.btn}
