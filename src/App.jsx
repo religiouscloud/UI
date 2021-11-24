@@ -1,4 +1,6 @@
 import React from "react";
+import ReactGA from 'react-ga';
+
 import './App.css';
 import Home from "./Home";
 import Footer from "./Footer";
@@ -9,6 +11,10 @@ import { BrowserRouter as Router,Switch, Route } from "react-router-dom";
 import Temple from "./Temple";
 import LandingPage from "./landingPage";
 import About from "./About";
+
+
+const TRACKING_ID = "G-VHR1FTLLFE"; // YOUR_OWN_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
   // const [notes, setNotes] = useState(data);
