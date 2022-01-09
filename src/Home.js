@@ -296,7 +296,7 @@ export default function Home(props) {
                           className="dropdown"
                         >
                           <option value="">Select Religion</option>
-                          <option value="Hinduism">Hinduism</option>
+                          <option value="Hinduism" selected>Hinduism</option>
                           <option value="Christian">Christian</option>
                           <option value="Islam">Islam</option>
                         </select>
@@ -318,7 +318,7 @@ export default function Home(props) {
                           }}
                           className="dropdown"
                         >
-                          <option value="">No Religion selected</option>
+                          <option value="">No Deity selected</option>
                           {deityList.map((item) => {
                             return (
                               <option value={item.deity}>{item.deity}</option>
