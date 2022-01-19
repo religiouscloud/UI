@@ -212,20 +212,6 @@ const Header = props => {
               >
                 Feedback
               </Button>
-              {/* <a
-                href="https://forms.gle/pPoqVevYL2XWGdLP8"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className={classes.btn}>Add Temple</Button>
-              </a> 
-              <a
-                href="https://forms.gle/GjMSgth65PNW7o2G6"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className={classes.btn}>Feedback</Button>
-              </a> */}
               <Button
                 className={classes.btn}
                 onClick={() => handleButtonClick("/about")}

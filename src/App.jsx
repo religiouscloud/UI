@@ -17,32 +17,6 @@ const TRACKING_ID = "G-VHR1FTLLFE"; // YOUR_OWN_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
 function App() {
-  // const [notes, setNotes] = useState(data);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [postsPerPage, setPostsPerPage] = useState(18);
-  
-  // function addNote(newNote) {
-  //   setNotes(prevNotes => {
-  //     return [...prevNotes, newNote];
-  //   });
-  // }
-
-  // function deleteNote(id) {
-  //   setNotes(prevNotes => {
-  //     return prevNotes.filter((noteItem, index) => {
-  //       return index !== id;
-  //     });
-  //   });
-  // }
-
-  // const last = currentPage*postsPerPage;
-  // const first = last-postsPerPage;
-  // const currentPosts = data.slice(first,last); 
-
-  // function paginate(num){
-  //   setCurrentPage(num);
-  // }
-
   return (
     <React.Fragment>
       <div className="content">

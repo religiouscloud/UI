@@ -68,25 +68,7 @@ function Temple({match}) {
           .catch((err) => {
             console.log(err);
           });
-    },[]);
-    
-    
-    // const handleDelete = () => {
-    //     axios
-    //       .delete(
-    //         "https://ckkq9ky3ig.execute-api.us-east-2.amazonaws.com/production3/temples/delete",
-    //         { data: obj }
-    //       )
-    //       .then((res) => {
-    //         console.log(res);
-    //         setDeleted(true);
-    //       })
-    //       .catch((err) => {
-    //         console.log(err);
-    //       });
-    // }
-
-    // if(deleted) return <Redirect to='/templeSearch' />
+    },[]); 
 
     return (
       <div className="messi" style={{ padding: 8 }}>
@@ -128,29 +110,7 @@ function Temple({match}) {
                         </p>
                       </div>
                     </Grid>
-                    {/* <Grid item container xs={12}>
-                      <div className={classes.but}>
-                        <Button
-                          className={classes.but1}
-                          variant="contained"
-                          // disabled
-                          color="secondary"
-                          onClick={handleDelete}
-                        >
-                          Delete
-                        </Button>
-                        <Link style={notestyle} to={`/update/${temple.PK}`}>
-                        <Button
-                          variant="contained"
-                          // disabled
-                          color="primary"
-                          className={classes.but1}
-                        >
-                          Update
-                        </Button>
-                      </Link>
-                      </div>
-                    </Grid> */}
+                    {}
                   </Grid>
                 </Tab>
                 <Tab eventKey="contact" title="Contact">
